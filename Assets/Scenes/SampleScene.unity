@@ -1625,6 +1625,7 @@ MonoBehaviour:
   dex: 0
   inte: 0
   exp: 0
+  canvas: {fileID: 768006598}
 --- !u!212 &723200764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1922,7 +1923,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2000, y: 4000}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1939,7 +1940,7 @@ Canvas:
   m_GameObject: {fileID: 768006598}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1965,7 +1966,7 @@ RectTransform:
   - {fileID: 166914589}
   - {fileID: 1994569806}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3516,7 +3517,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1559940548
 PrefabInstance:

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -28,8 +29,15 @@ public class Player : MonoBehaviour
     public int inte =0; // intelligenz
     //Vorläufig? Levelzuteilung nach erlangten exp?
     public int exp=0; //Erfahrungspunkte
+    //Canvas für skilltree
+    public GameObject canvas;
+    bool canvasisActive;
 
+    void Start(){
+        canvas.SetActive(false);
+        canvasisActive=false;
 
+    }
 
     void Update()
     {   
@@ -48,6 +56,21 @@ public class Player : MonoBehaviour
             nextAttackTime= Time.time + 1f / attackRate;
         }
         }
+        //Skilltree aufrufen
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            if(canvasisActive){
+                canvas.SetActive(false);
+                canvasisActive=false;
+
+            }else{
+                canvas.SetActive(true);
+                canvasisActive=true;
+
+
+            }
+        }
+
         
     }
 
