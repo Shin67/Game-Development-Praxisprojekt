@@ -4,15 +4,20 @@ using UnityEngine;
 using TMPro;
 using static SkillTree;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Skill : MonoBehaviour
-{
+{   
+    //Id des skills
     public int id;
-
+    //Texte innerhalb des Trees
     public TMP_Text TitleText;
     public TMP_Text DescText;
-
+    //Nachfolger Array
     public int[] ConnectedSkills;
+    //Effekt der durch buy ausgelöst werden soll
+    public UnityEvent effect;   
+
 
     public void UpdateUI()
     {   //die Textfelder im SKilltree werden manipuliert
@@ -38,6 +43,8 @@ public class Skill : MonoBehaviour
         skillTree.SkillPoints -=1;
         skillTree.SkillLevels[id] ++;
         skillTree.UpdateAllSkillUI();
+
+        effect.Invoke();
 
     }
 

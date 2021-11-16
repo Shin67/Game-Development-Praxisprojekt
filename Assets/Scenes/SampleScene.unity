@@ -2736,6 +2736,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arrow01
       objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
 --- !u!1001 &1212768637
