@@ -17,24 +17,29 @@ public class SkillTree : MonoBehaviour
    public List<Skill> SkillList;
    public GameObject SkillHolder;
 
+   /*public List<Skill> LevelupSkillList;
+   public GameObject LevelupSkillHolder;*/
+
    public List<GameObject> ConnectorList;
    public GameObject ConnectorHolder;
 
    public double SkillPoints;
+   public double LevelupSkillpoints;
 
    private void Start(){
-       SkillPoints=200000; //testwert
+       SkillPoints=0; //testwert
 
        SkillLevels= new int[13];
 
-       SkillCaps = new[] {5,5,5,5,5,5,5,5,5,5,5,5,5};
+       SkillCaps = new[] {1,5,1,1,1,5,1,1,1,5,1,1,1}; //Vorläufige skillcaps
 
        SkillNames = new[] 
        {
         "1",
        "+ Dex",
        "ElementarPfeil",
-       "Elementarregen","Scharfschuss",
+       "Elementarregen",
+       "Scharfschuss",
        "+STR",
        "Elementarhieb",
        "Elementarwirbel",
@@ -62,9 +67,11 @@ public class SkillTree : MonoBehaviour
        };
 
         foreach (var skill in SkillHolder.GetComponentsInChildren<Skill>()){        //Allen Skillsaus dem Unityfenster werden in die Skillliste eingefügt
+            skill.isNormal=true;
             SkillList.Add(skill); 
             //Debug.Log("Skill hinzugefügt:");
-        }    
+        }   
+        
         
         foreach (var connector in ConnectorHolder.GetComponentsInChildren<RectTransform>()){    //Das gleiche für die connectors aus dem Unity fenster
             ConnectorList.Add(connector.gameObject);
@@ -72,6 +79,7 @@ public class SkillTree : MonoBehaviour
             }     
 
         for ( var i = 0; i < SkillList.Count; i++) SkillList[i].id = i;                     //den skills werden IDs vergeben 
+
 
         SkillList[0].ConnectedSkills =new [] {1,5,9}; //nachfolger werden festgelegt
         //Bogenklassen
@@ -97,6 +105,7 @@ public class SkillTree : MonoBehaviour
   public void UpdateAllSkillUI()    //für jeden skill wird das UI geupdatet
   {
       foreach( var skill in SkillList) skill.UpdateUI();
+      //foreach( var skill in LevelupSkillList) skill.UpdateUI();
 
   }
 }

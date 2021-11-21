@@ -8,6 +8,9 @@ public class fightable : MonoBehaviour
     public Animator animator;
     public int maxHealth = 100;
     int currentHealth;
+    //LevelSystem Komponente
+    public int expValue=100; //wie viel xp bringt das töten?
+    [SerializeField] Player player;
     
     void Start()
     {
@@ -31,6 +34,8 @@ public class fightable : MonoBehaviour
 
         GetComponent<Collider2D>().enabled= false;
         this.enabled = false;
+
+        player.addExp(expValue);
 
     }
 }

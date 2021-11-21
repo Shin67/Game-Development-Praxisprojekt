@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static SkillTree;
 
 public class Player : MonoBehaviour
 {
@@ -27,11 +28,14 @@ public class Player : MonoBehaviour
     public int str=0; //staerke
     public int dex=0; //Geschicklichkeit
     public int inte =0; // intelligenz
-    //Vorläufig? Levelzuteilung nach erlangten exp?
-    public int exp=0; //Erfahrungspunkte
     //Canvas für skilltree
     public GameObject canvas;
     bool canvasisActive;
+    //Levelsystem
+    public int exp=0;
+    int level=0;
+    //Vorläufige leveleinteilung
+    int[] levelStufen = new int[] { 0,300,700,1200,1800,2400,3100,3900,4700,5600,6600,7700,8900,10200,11600,13100,14700,16400,1900,2200,23000,25000,30000,35000,400000 }; // enthalten sind die mengen an nötigen xp
 
     void Start(){
         canvas.SetActive(false);
@@ -50,11 +54,18 @@ public class Player : MonoBehaviour
         //Kampf shit
         if(Time.time >= nextAttackTime)
         {
+        //Attack
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
             nextAttackTime= Time.time + 1f / attackRate;
         }
+        }
+        //Debug Taste, alles möglich zum testen kann hier rein
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log(level);
+            
         }
         //Skilltree aufrufen
         if(Input.GetKeyDown(KeyCode.T))
@@ -92,6 +103,33 @@ public class Player : MonoBehaviour
             enemy.GetComponent<fightable>().TakeDMG(atk);
         }
     } 
+
+    public void addExp(int xp){
+        exp+=xp;
+        checkLevelup();
+    }
+
+    void checkLevelup(){
+        int temp =0;
+        foreach(int lv in levelStufen)  //Index(Level) wird gesucht, ab dem die exp kleiner sind als im Verzeichnis steht -> level wird zu den exp berechnet
+        {
+            if(lv < exp){
+                temp++;
+            }
+            else{
+                break;
+            }
+        }
+        Debug.Log(temp);
+        if(temp>level){             //ist das errechnete Level größer als das aktuelle liegt ein levelup vor
+            Debug.Log(temp-level);
+            skillTree.SkillPoints+=(temp-level);
+            skillTree.LevelupSkillpoints+=(temp-level);
+
+            level=temp;
+        //Werden mehrere Level auf einmal erreicht(was zu vermeiden ist) funzt das system trotzdem,
+        }
+    }
 
     
     void OnDrawGizmosSelected()

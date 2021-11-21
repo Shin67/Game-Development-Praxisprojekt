@@ -16,7 +16,9 @@ public class Skill : MonoBehaviour
     //Nachfolger Array
     public int[] ConnectedSkills;
     //Effekt der durch buy ausgelöst werden soll
-    public UnityEvent effect;   
+    public UnityEvent effect;
+    //
+    public bool isNormal; //LevelupSkills
 
 
     public void UpdateUI()
@@ -38,14 +40,15 @@ public class Skill : MonoBehaviour
     }
 
     public void Buy()       //selbsterklärend
-    {
+    {   
+      
         if(skillTree.SkillPoints < 1 || skillTree.SkillLevels[id] >= skillTree.SkillCaps[id] ) return;
         skillTree.SkillPoints -=1;
         skillTree.SkillLevels[id] ++;
         skillTree.UpdateAllSkillUI();
 
         effect.Invoke();
-
+       
     }
 
 

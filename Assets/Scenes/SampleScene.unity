@@ -788,6 +788,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 376584402}
   maxHealth: 100
+  expValue: 100
+  player: {fileID: 723200763}
 --- !u!224 &413222532 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 193592881594589398, guid: d65e49153f3cac0438439811094097ef,
@@ -1624,8 +1626,8 @@ MonoBehaviour:
   str: 0
   dex: 0
   inte: 0
-  exp: 0
   canvas: {fileID: 768006598}
+  exp: 0
 --- !u!212 &723200764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3520,6 +3522,7 @@ MonoBehaviour:
   ConnectorList: []
   ConnectorHolder: {fileID: 166914588}
   SkillPoints: 0
+  LevelupSkillpoints: 0
 --- !u!4 &1463855722
 Transform:
   m_ObjectHideFlags: 0
