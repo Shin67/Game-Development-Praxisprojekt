@@ -35,7 +35,11 @@ public class Player : MonoBehaviour
     public int exp=0;
     int level=0;
     //Vorläufige leveleinteilung
-    int[] levelStufen = new int[] { 0,300,700,1200,1800,2400,3100,3900,4700,5600,6600,7700,8900,10200,11600,13100,14700,16400,1900,2200,23000,25000,30000,35000,400000 }; // enthalten sind die mengen an nötigen xp
+    int[] levelStufen = new int[] { 0,300,700,1200,1800,2400,   // enthalten sind die mengen an nötigen xp
+                                    3100,3900,4700,5600,6600,
+                                    7700,8900,10200,11600,13100,
+                                    14700,16400,1900,2200,23000,
+                                    25000,30000,35000,400000 }; 
 
     void Start(){
         canvas.SetActive(false);
