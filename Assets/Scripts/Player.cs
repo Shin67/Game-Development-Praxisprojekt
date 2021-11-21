@@ -28,6 +28,19 @@ public class Player : MonoBehaviour
     public int str=0; //staerke
     public int dex=0; //Geschicklichkeit
     public int inte =0; // intelligenz
+    //Skills aus Skilltree
+    public bool elementarPfeil = false;
+    public bool elementarRegen = false;
+    public bool scharfschuss = false;
+    public bool elementarhieb = false;
+    public bool elementarwirbel = false;
+    public bool rage = false;
+    public bool elementarball = false;
+    public bool elementarflaeche = false;
+    public bool sturmkette = false;
+    
+
+
     //Canvas für skilltree
     public GameObject canvas;
     bool canvasisActive;

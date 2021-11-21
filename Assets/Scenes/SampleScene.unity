@@ -592,6 +592,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage02
       objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setElementarBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
 --- !u!1 &376584401
@@ -1507,6 +1542,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee03
       objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setElementarWirbel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
 --- !u!1 &598631186
@@ -1661,6 +1731,15 @@ MonoBehaviour:
   str: 0
   dex: 0
   inte: 0
+  elementarPfeil: 0
+  elementarRegen: 0
+  scharfschuss: 0
+  elementarhieb: 0
+  elementarwirbel: 0
+  rage: 0
+  elementarball: 0
+  elementarflaeche: 0
+  sturmkette: 0
   canvas: {fileID: 768006598}
   exp: 0
 --- !u!212 &723200764
@@ -1908,6 +1987,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee04
       objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setRage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
 --- !u!1 &768006598
@@ -2143,6 +2257,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage04
       objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setSturmkette
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
 --- !u!1001 &928711053
@@ -2276,6 +2425,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Arrow03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setElementarRegen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
@@ -2566,6 +2750,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Arrow02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setElementarpfeil
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
@@ -2943,6 +3162,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage03
       objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setElementarflaeche
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
 --- !u!1001 &1230589696
@@ -3076,6 +3330,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Arrow04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setScharfschuss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
@@ -4030,6 +4319,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Melee02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setElementarHieb
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
