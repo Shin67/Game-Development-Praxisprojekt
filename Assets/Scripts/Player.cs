@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     public bool elementarball = false;
     public bool elementarflaeche = false;
     public bool sturmkette = false;
+    public bool[] skillarray= new bool[9];      // haben ist besser als brauchen ¯\_(ツ)_/¯
     
 
 
@@ -57,6 +58,11 @@ public class Player : MonoBehaviour
     void Start(){
         canvas.SetActive(false);
         canvasisActive=false;
+
+        skillarray = new bool[] {elementarPfeil,elementarRegen,
+                                            scharfschuss,elementarhieb,
+                                            elementarwirbel,rage,elementarball,
+                                            elementarflaeche,sturmkette};
 
     }
 
