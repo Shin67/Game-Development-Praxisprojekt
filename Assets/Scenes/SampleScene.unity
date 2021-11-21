@@ -1139,6 +1139,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee01
       objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: increaseSTR
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
 --- !u!1 &519420028
@@ -1692,6 +1727,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1371691387}
+  - {fileID: 1424773811}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2741,7 +2777,7 @@ PrefabInstance:
     - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
         type: 3}
       propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
         type: 3}
@@ -2750,8 +2786,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
         type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
       propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: increaseDEX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}
@@ -3344,6 +3400,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420985813}
   m_CullTransparentMesh: 1
+--- !u!1 &1424773809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1424773811}
+  - component: {fileID: 1424773810}
+  m_Layer: 7
+  m_Name: EffectController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1424773810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424773809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b00f4548502b24997db91c91de71f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 723200763}
+--- !u!4 &1424773811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424773809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 723200765}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1445309883 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 193592881594589398, guid: d65e49153f3cac0438439811094097ef,
@@ -3668,6 +3768,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mage01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424773810}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: increaseINT
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Effect_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132416675818980959, guid: d65e49153f3cac0438439811094097ef,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65e49153f3cac0438439811094097ef, type: 3}

@@ -68,7 +68,11 @@ public class Player : MonoBehaviour
         //Debug Taste, alles möglich zum testen kann hier rein
         if(Input.GetKeyDown(KeyCode.X))
         {
-            Debug.Log(level);
+            Debug.Log(string.Format("Levelstand" + level));
+            Debug.Log(string.Format("int" + this.inte));
+            Debug.Log(string.Format("str" + str));
+            Debug.Log(string.Format("dex" + dex));
+            
             
         }
         //Skilltree aufrufen
@@ -134,6 +138,7 @@ public class Player : MonoBehaviour
         //Werden mehrere Level auf einmal erreicht(was zu vermeiden ist) funzt das system trotzdem,
         }
     }
+    
 
     
     void OnDrawGizmosSelected()
