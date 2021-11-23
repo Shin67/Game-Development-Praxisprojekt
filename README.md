@@ -7,5 +7,5 @@
 - Level Up -> Alex(fertig)
 - Lebensanzeige und Statusbar vom Spieler
 - Erste Map (Sand Box)
-- Häuser betreten und Scenen wechsel -> alex
+- Häuser betreten und Scenen wechsel -> alex (fertig)
 - Gegner Leben anzeigen
