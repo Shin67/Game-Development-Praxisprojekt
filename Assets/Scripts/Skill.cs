@@ -17,11 +17,11 @@ public class Skill : MonoBehaviour
     public int[] ConnectedSkills;
     //Effekt der durch buy ausgelöst werden soll
     public UnityEvent effect;
-    //
     public bool isNormal; //LevelupSkills
 
 
-    public void Start(){
+    public void Start()
+    {
         DontDestroyOnLoad(gameObject);  //damit skills in neuer szene erhalten bleiben
     }
 
@@ -38,9 +38,7 @@ public class Skill : MonoBehaviour
         {
             skillTree.SkillList[connectedSkill].gameObject.SetActive(skillTree.SkillLevels[id] > 0);
             skillTree.ConnectorList[connectedSkill].gameObject.SetActive(skillTree.SkillLevels[id] > 0);
-
-        }
-            
+        }            
     }
 
     public void Buy()       //selbsterklärend
@@ -54,6 +52,4 @@ public class Skill : MonoBehaviour
         effect.Invoke();
        
     }
-
-
 }

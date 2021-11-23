@@ -38,30 +38,27 @@ public class Player : MonoBehaviour
     public bool elementarball = false;
     public bool elementarflaeche = false;
     public bool sturmkette = false;
-    public bool[] skillarray= new bool[9];      // haben ist besser als brauchen ¯\_(ツ)_/¯
-    
-
-
+    public bool[] skillarray= new bool[9];      // haben ist besser als brauchen ¯\_(ツ)_/¯  
     //Canvas für skilltree
     public GameObject canvas;
     bool canvasisActive;
     //Levelsystem
     public int exp=0;
     int level=0;
-    //Vorläufige leveleinteilung
-    int[] levelStufen = new int[] { 0,300,700,1200,1800,2400,   // enthalten sind die mengen an nötigen xp
+    //Vorläufige leveleinteilung, enthalten sind die mengen an nötigen xp
+    int[] levelStufen = new int[] { 0,300,700,1200,1800,2400,   
                                     3100,3900,4700,5600,6600,
                                     7700,8900,10200,11600,13100,
                                     14700,16400,1900,2200,23000,
                                     25000,30000,35000,400000 }; 
 
-    void Start(){
-        	
+    void Start()
+    {        	
         DontDestroyOnLoad(gameObject);  //damit player in neuer szene erhalten bleibt
-
+        //Bug rudimentär gefixed, keine ahnung was das problem eigentlich ist ¯\_(ツ)_/¯
         canvas.SetActive(false);
         canvasisActive=false;
-
+        //Array mit allen durch den Baum erhaltenden Skills(Ka ob jemals gebraucht, war für etwas anderes geplant)
         skillarray = new bool[] {elementarPfeil,elementarRegen,
                                             scharfschuss,elementarhieb,
                                             elementarwirbel,rage,elementarball,
@@ -107,12 +104,8 @@ public class Player : MonoBehaviour
             }else{
                 canvas.SetActive(true);
                 canvasisActive=true;
-
-
             }
-        }
-
-        
+        }        
     }
 
     void FixedUpdate()
@@ -128,42 +121,45 @@ public class Player : MonoBehaviour
         //Attack enemies
         Collider2D [] hitEnemies= Physics2D.OverlapCircleAll(attackpoint.position, attackrange, enemyLayers);
         //dmg to enemies
-        foreach(Collider2D enemy in hitEnemies){
+        foreach(Collider2D enemy in hitEnemies)
+        {
             Debug.Log("Hit"+enemy.name);
             enemy.GetComponent<fightable>().TakeDMG(atk);
         }
     } 
 
-    public void addExp(int xp){
+    public void addExp(int xp)
+    {
         exp+=xp;
         checkLevelup();
     }
 
-    void checkLevelup(){
+    void checkLevelup()
+    {
         int temp =0;
         foreach(int lv in levelStufen)  //Index(Level) wird gesucht, ab dem die exp kleiner sind als im Verzeichnis steht -> level wird zu den exp berechnet
         {
-            if(lv < exp){
+            if(lv < exp)
+            {
                 temp++;
             }
-            else{
+            else
+            {
                 break;
             }
         }
         Debug.Log(temp);
-        if(temp>level){             //ist das errechnete Level größer als das aktuelle liegt ein levelup vor
-            Debug.Log(temp-level);
+        if(temp>level) //ist das errechnete Level größer als das aktuelle liegt ein levelup vor
+        {             
+            //Debug.Log(temp-level);
             skillTree.SkillPoints+=(temp-level);
             skillTree.LevelupSkillpoints+=(temp-level);
-
             level=temp;
-        //Werden mehrere Level auf einmal erreicht(was zu vermeiden ist) funzt das system trotzdem,
+            //Werden mehrere Level auf einmal erreicht(was zu vermeiden ist) funzt das system trotzdem,
         }
     }
     
-
-    
-    void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected() //Schöner kreis im editor um den player herum, hat auf spiel keinen einfluss
     {
         if(attackpoint == null)
         {
@@ -171,6 +167,4 @@ public class Player : MonoBehaviour
         }
         Gizmos.DrawWireSphere(attackpoint.position, attackrange);
     }   
-
-
 }

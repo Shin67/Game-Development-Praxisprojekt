@@ -6,28 +6,20 @@ using UnityEngine.SceneManagement;
 public class LoadLevel : MonoBehaviour
 {
 
-    [SerializeField] string lvToLoad;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] string lvToLoad; //Name von dem nächsten level  
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    void OnTriggerEnter2D(Collider2D collision){
         GameObject collisionObject = collision.gameObject;
 
-        if(collisionObject.tag =="Player"){
+        if(collisionObject.tag =="Player")  //nur wenn en spieler und kein mob hereinläuft funzt es
+        {
                 loadScene();
         }
     }
 
-    public void loadScene(){
+    public void loadScene() //extra funktion, falls mal animation und co dazukommen
+    {
         Application.LoadLevel(lvToLoad);
     }
 }
