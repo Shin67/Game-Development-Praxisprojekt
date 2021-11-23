@@ -56,6 +56,9 @@ public class Player : MonoBehaviour
                                     25000,30000,35000,400000 }; 
 
     void Start(){
+        	
+        DontDestroyOnLoad(gameObject);  //damit player in neuer szene erhalten bleibt
+
         canvas.SetActive(false);
         canvasisActive=false;
 

@@ -27,6 +27,7 @@ public class SkillTree : MonoBehaviour
    public double LevelupSkillpoints;
 
    private void Start(){
+       DontDestroyOnLoad(gameObject);  //damit skilltree in neuer szene erhalten bleibt
        SkillPoints=0; //testwert
 
        SkillLevels= new int[13];

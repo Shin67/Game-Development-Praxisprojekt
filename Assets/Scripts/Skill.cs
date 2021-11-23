@@ -21,6 +21,10 @@ public class Skill : MonoBehaviour
     public bool isNormal; //LevelupSkills
 
 
+    public void Start(){
+        DontDestroyOnLoad(gameObject);  //damit skills in neuer szene erhalten bleiben
+    }
+
     public void UpdateUI()
     {   //die Textfelder im SKilltree werden manipuliert
         TitleText.text=$"{skillTree.SkillLevels[id]}/{skillTree.SkillCaps[id]}\n{skillTree.SkillNames[id]}";
