@@ -9,3 +9,4 @@
 - Erste Map (Sand Box)
 - Häuser betreten und Scenen wechsel -> alex (fertig)
 - Gegner Leben anzeigen
+- InventarSystem -> Alex
