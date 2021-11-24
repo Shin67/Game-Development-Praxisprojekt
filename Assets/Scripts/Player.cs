@@ -123,8 +123,10 @@ public class Player : MonoBehaviour
         //dmg to enemies
         foreach(Collider2D enemy in hitEnemies)
         {
-            Debug.Log("Hit"+enemy.name);
-            enemy.GetComponent<fightable>().TakeDMG(atk);
+             
+                Debug.Log("Hit"+enemy.name);
+                enemy.GetComponent<fightable>().TakeDMG(atk);             
+            
         }
     } 
 
