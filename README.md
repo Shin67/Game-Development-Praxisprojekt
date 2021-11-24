@@ -10,3 +10,5 @@
 - Häuser betreten und Scenen wechsel -> alex (fertig)
 - Gegner Leben anzeigen
 - InventarSystem -> Alex
+- SpeicherSystem
+- 
