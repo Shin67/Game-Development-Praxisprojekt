@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class LoadLevel : MonoBehaviour
 {
 
-    [SerializeField] string lvToLoad; //Name von dem nächsten level  
+    public string lvToLoad; //Name von dem nächsten level  
+    public int x;           //xpos im neuen level
+    public int y;           //ypos im neuen level
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,6 +17,7 @@ public class LoadLevel : MonoBehaviour
         if(collisionObject.tag =="Player")  //nur wenn en spieler und kein mob hereinläuft funzt es
         {
                 loadScene();
+                collisionObject.transform.position=new Vector3(x,y,0);
         }
     }
 
