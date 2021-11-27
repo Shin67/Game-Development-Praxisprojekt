@@ -55,7 +55,19 @@ public class DialogueManager : MonoBehaviour
         dialogueDelay = 60;
         string sentence = sentences.Dequeue();
         Debug.Log(sentence);
-        dialogueText.text = sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+    //Render each letter by itself and not all at once
+    IEnumerator TypeSentence(string sentence){
+        dialogueText.text = "";
+        foreach (char letter in sentence.ToCharArray()){
+            dialogueText.text += letter;
+            //Wait for waitTime many seconds
+            float waitTime = 0.03f;
+            yield return new WaitForSeconds(waitTime);
+        }
     }
 
     void EndDialogue(){
