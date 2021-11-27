@@ -34,6 +34,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    //Start Dialogue Methode, wird aus anderem Skript gerufen
     public void StartDialogue(Dialogue dialogue){
         animator.SetBool("IsVisible", true);
         activeDialogue = true;

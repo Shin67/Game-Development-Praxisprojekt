@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -13,8 +13,10 @@ public class Interactable : MonoBehaviour
     public float radius =3f;
 
     public bool isInRange;
+    public bool busyWithInteraction;
     public KeyCode interactionKey;
     public UnityEvent interactAction;
+    public Dialogue dialogue;
 
 
     void OnDrawGizmosSelected()
@@ -28,10 +30,9 @@ public class Interactable : MonoBehaviour
     {
         if(isInRange)
         {
-            if(Input.GetKeyDown(interactionKey))
+            if(Input.GetKeyDown(interactionKey) && !busyWithInteraction)
             {
-            Debug.Log("Key gedrueckt");
-
+                Debug.Log("Key gedrueckt");
                 interactAction.Invoke();
             }
 
@@ -60,7 +61,14 @@ public class Interactable : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             isInRange= false;
+            busyWithInteraction = false;
             //Debug.Log("nicht mehr in range ");
         }
+    }
+
+    //Sollte als Unity Event invoked werdan damit Dialogue beginnt
+    public void TriggerDialogue(){
+        busyWithInteraction = true;
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }
