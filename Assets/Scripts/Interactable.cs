@@ -5,7 +5,7 @@ using UnityEngine;
 //using System.Collections.Generic;
 //using UnityEngine;
 using UnityEngine.Events;
-//using UnityEngine.UI;
+using UnityEngine.UI;
 
 public class Interactable : MonoBehaviour
 {
@@ -66,6 +66,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    //Sollte als Unity Event invoked werdan damit Dialogue beginnt
     public void TriggerDialogue(){
         busyWithInteraction = true;
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
