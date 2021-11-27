@@ -52,6 +52,7 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
+        //60 frames of delay
         dialogueDelay = 60;
         string sentence = sentences.Dequeue();
         Debug.Log(sentence);
