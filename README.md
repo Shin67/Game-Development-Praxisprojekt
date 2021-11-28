@@ -8,7 +8,7 @@
 - Lebensanzeige und Statusbar vom Spieler
 - Erste Map (Sand Box)
 - Häuser betreten und Scenen wechsel -> alex (fertig)
-- Gegner Leben anzeigen
+- Gegner Leben anzeigen -> Oscar
 - InventarSystem -> Alex
 - SpeicherSystem -> Oscar
 - 
