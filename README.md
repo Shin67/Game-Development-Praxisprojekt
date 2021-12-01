@@ -1,7 +1,7 @@
 # Game Development Praxisprojekt
 ## Erster Sprint
 - Start Menü -> Oscar
-- Dialoge -> Moritz (In Grundzügen fertig, kann nach Wunsch noch angepasst/erweitert werden)
+- Dialoge -> Moritz (TODO: Verschiedene Antwortmöglichkeiten, die in verschiedenen Dialogen resultieren kann; Dialog kann Event triggern)
 - Interaktion von Objekten -> Teresa
 - Gegner können sehen und verfolgen den Spieler -> Lukas
 - Level Up -> Alex(fertig)
