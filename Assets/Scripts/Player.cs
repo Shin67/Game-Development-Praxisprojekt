@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     public LayerMask enemyLayers;
     public float attackRate = 2;
     float nextAttackTime = 0f;
+    int healthPoints;
+    int maxHealth=100; //provisorischer wert
     //Attribute aus Spielmechaniken.pdf
     public int atk=40;  //physischer Schaden
     public int matk=0;  //magischer Schaden
@@ -39,9 +41,9 @@ public class Player : MonoBehaviour
     public bool elementarflaeche = false;
     public bool sturmkette = false;
     public bool[] skillarray= new bool[9];      // haben ist besser als brauchen ¯\_(ツ)_/¯  
-    //Canvas für skilltree
-    public GameObject canvas;
-    bool canvasisActive;
+    //canvasSkilltree für skilltree
+    public GameObject canvasSkilltree;
+    bool canvasSkilltreeisActive;
     //Levelsystem
     public int exp=0;
     int level=0;
@@ -52,19 +54,46 @@ public class Player : MonoBehaviour
                                     14700,16400,1900,2200,23000,
                                     25000,30000,35000,400000 }; 
 
+    //InventoryShit
+    private Inventory inventory;
+    [SerializeField] private UI_Inventory ui_Inventory;
+    //Canvas für Inventar
+    public GameObject canvasInventory;
+    bool canvasInventoryisActive;
+    public Vector2 position;
+
     void Start()
     {        	
         DontDestroyOnLoad(gameObject);  //damit player in neuer szene erhalten bleibt
         //Bug rudimentär gefixed, keine ahnung was das problem eigentlich ist ¯\_(ツ)_/¯
-        canvas.SetActive(false);
-        canvasisActive=false;
+        canvasSkilltree.SetActive(false);
+        canvasSkilltreeisActive=false;
+        canvasInventory.SetActive(false);
+        canvasInventoryisActive=false;
         //Array mit allen durch den Baum erhaltenden Skills(Ka ob jemals gebraucht, war für etwas anderes geplant)
         skillarray = new bool[] {elementarPfeil,elementarRegen,
                                             scharfschuss,elementarhieb,
                                             elementarwirbel,rage,elementarball,
                                             elementarflaeche,sturmkette};
 
+        //InventoryShit
+        inventory=new Inventory(UseItem);
+        ui_Inventory.setInventory(inventory);    
+
     }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        ItemWorld itemworld = collider.GetComponent<ItemWorld>();
+        if(itemworld != null)
+        {
+            //Debug.Log("Item berührt");
+            inventory.addItem(itemworld.getItem());
+            //Debug.Log(inventory.getItemList().Count);
+            itemworld.DestroySelf();
+        }
+    }
+   
 
     void Update()
     {   
@@ -97,21 +126,34 @@ public class Player : MonoBehaviour
         //Skilltree aufrufen
         if(Input.GetKeyDown(KeyCode.T))
         {
-            if(canvasisActive){
-                canvas.SetActive(false);
-                canvasisActive=false;
+            if(canvasSkilltreeisActive){
+                canvasSkilltree.SetActive(false);
+                canvasSkilltreeisActive=false;
 
             }else{
-                canvas.SetActive(true);
-                canvasisActive=true;
+                canvasSkilltree.SetActive(true);
+                canvasSkilltreeisActive=true;
             }
-        }        
+        }   
+        //Inventar aufrufen
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            if(canvasInventoryisActive){
+                canvasInventory.SetActive(false);
+                canvasInventoryisActive=false;
+
+            }else{
+                canvasInventory.SetActive(true);
+                canvasInventoryisActive=true;
+            }
+        }      
     }
 
     void FixedUpdate()
     {
         //Movement
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        position=rb.position;
     }
 
     void Attack()
@@ -169,4 +211,25 @@ public class Player : MonoBehaviour
         }
         Gizmos.DrawWireSphere(attackpoint.position, attackrange);
     }   
+
+    private void UseItem(Item item)
+    {
+        switch(item.itemtype)
+        {          
+            case Item.Itemtype.Sword: //eigentlich weglassen aber erstmal für demo drin, hat eigentlich keinen effekt, deswegen aus switch auslassen
+            //effekt hier einfügen
+            inventory.RemoveItem(new Item{itemtype = Item.Itemtype.Sword, amount=1});
+            break;
+            case Item.Itemtype.HealPotion: //effekt hier einfügen                    
+                Debug.Log("Leben erhalten");
+                healthPoints+=10;
+                if(healthPoints>maxHealth) 
+                {
+                    healthPoints=maxHealth;
+                }
+             inventory.RemoveItem(new Item{itemtype = Item.Itemtype.HealPotion, amount=1});
+             break;
+
+        }
+    }
 }

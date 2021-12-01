@@ -79,7 +79,7 @@ public class SkillTree : MonoBehaviour
         foreach (var connector in ConnectorHolder.GetComponentsInChildren<RectTransform>())//Das gleiche für die connectors aus dem Unity fenster
         {    
             ConnectorList.Add(connector.gameObject);
-            Debug.Log(connector);
+            //Debug.Log(connector);
             }   
 
         for ( var i = 0; i < SkillList.Count; i++) SkillList[i].id = i;                     //den skills werden IDs vergeben 
