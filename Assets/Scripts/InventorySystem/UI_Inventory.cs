@@ -44,7 +44,7 @@ public class UI_Inventory : MonoBehaviour
 
         int x = 0;
         int y = 0;
-        float cellSize = 30f;
+        float cellSize = 100f;
 
         foreach(Item item in inventory.getItemList())
         {
@@ -54,15 +54,15 @@ public class UI_Inventory : MonoBehaviour
             itemSlotRectTransform.anchoredPosition = new Vector2(x*cellSize, y*cellSize);
             Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
             image.sprite = item.GetSprite();//sprite aus den assets holen
-            /*TextMeshProUGUI uiText = itemSlotRectTransform.Find("Text").GetComponent<TextMeshProUGUI>();    //mengenangabe refreshen
+            Text uiText = itemSlotRectTransform.Find("amountText").GetComponent<Text>();    //mengenangabe refreshen
             if(item.amount>1)
             {
-                uiText.SetText(item.amount.ToString());
+                uiText.text =item.amount.ToString();
 
             }else{
-                uiText.SetText("");
+                uiText.text ="";
 
-            }*/
+            }
 
             Button myButton = itemSlotRectTransform.Find("button").GetComponent<Button>();
              
