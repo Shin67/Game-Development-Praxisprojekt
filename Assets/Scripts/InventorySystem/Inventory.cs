@@ -8,6 +8,8 @@ public class Inventory
     private List<Item> itemList;
     public event EventHandler OnItemListChanged;
     private Action<Item> useItemAction;
+    public int capacity=20;
+    public int inhalt=0;
 
     public Inventory(Action<Item> useItemAction)
     {
@@ -37,11 +39,13 @@ public class Inventory
             if(!isThere)
             {
                 itemList.Add(newItem);
+                inhalt++;
             }
         }
         else
         {
             itemList.Add(newItem);
+            inhalt++;
         }
         OnItemListChanged?.Invoke(this,EventArgs.Empty);
 
@@ -65,6 +69,7 @@ public class Inventory
             if(itemInInventory != null && itemInInventory.amount <= 0)
             {
                 itemList.Remove(itemInInventory);
+                inhalt--;
             }
             
 
@@ -72,6 +77,7 @@ public class Inventory
         else
         {
             itemList.Remove(item);
+            inhalt--;
         }
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
 

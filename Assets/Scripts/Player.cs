@@ -87,10 +87,14 @@ public class Player : MonoBehaviour
         ItemWorld itemworld = collider.GetComponent<ItemWorld>();
         if(itemworld != null)
         {
-            //Debug.Log("Item berührt");
-            inventory.addItem(itemworld.getItem());
-            //Debug.Log(inventory.getItemList().Count);
-            itemworld.DestroySelf();
+            if(inventory.inhalt<inventory.capacity)
+            {
+                //Debug.Log("Item berührt");
+                inventory.addItem(itemworld.getItem());
+                //Debug.Log(inventory.getItemList().Count);
+                 itemworld.DestroySelf();
+            }
+           
         }
     }
    

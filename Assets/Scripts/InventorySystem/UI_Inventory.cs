@@ -71,7 +71,7 @@ public class UI_Inventory : MonoBehaviour
             if(x>rowCap)    //wenn reihe voll dann die darunter befüllen
             {
                 x=0;
-                y++;
+                y--;
             }
         }
     }
