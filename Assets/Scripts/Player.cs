@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     public int str=0; //staerke
     public int dex=0; //Geschicklichkeit
     public int inte =0; // intelligenz
+    public int MP =0;
+    public int MPMax=100;
     //Skills aus Skilltree
     public bool elementarPfeil = false;
     public bool elementarRegen = false;
@@ -221,19 +223,92 @@ public class Player : MonoBehaviour
     {
         switch(item.itemtype)
         {          
-            case Item.Itemtype.Sword: //eigentlich weglassen aber erstmal für demo drin, hat eigentlich keinen effekt, deswegen aus switch auslassen
-            //effekt hier einfügen
-            inventory.RemoveItem(new Item{itemtype = Item.Itemtype.Sword, amount=1});
-            break;
-            case Item.Itemtype.HealPotion: //effekt hier einfügen                    
-                Debug.Log("Leben erhalten");
+                            
+           default:
+           case Item.Itemtype.HealPotionNormal:   
                 healthPoints+=10;
+                    if(healthPoints>maxHealth) 
+                    {
+                        healthPoints=maxHealth;
+                    }
+                inventory.RemoveItem(new Item{itemtype = Item.Itemtype.HealPotionNormal, amount=1});     
+           break;
+           case Item.Itemtype.HealPotionGroß:
+                healthPoints+=50;
                 if(healthPoints>maxHealth) 
                 {
                     healthPoints=maxHealth;
                 }
-             inventory.RemoveItem(new Item{itemtype = Item.Itemtype.HealPotion, amount=1});
-             break;
+                inventory.RemoveItem(new Item{itemtype = Item.Itemtype.HealPotionGroß, amount=1});   
+           break;
+           case Item.Itemtype.ManaTrank:   
+                MP+=10;
+                if(MP>MPMax) 
+                {
+                    MP=MPMax;
+                }
+                inventory.RemoveItem(new Item{itemtype = Item.Itemtype.ManaTrank, amount=1});   
+           break;
+           case Item.Itemtype.ManaTrankGroß:
+                MP+=50;
+                if(MP>MPMax) 
+                {
+                    MP=MPMax;
+                }
+                inventory.RemoveItem(new Item{itemtype = Item.Itemtype.ManaTrankGroß, amount=1});           
+           break;
+           case Item.Itemtype.MettBrot:   
+                healthPoints+=20;
+                if(healthPoints>maxHealth) 
+                {
+                    healthPoints=maxHealth;
+                }
+                inventory.RemoveItem(new Item{itemtype = Item.Itemtype.MettBrot, amount=1});     
+           break;
+           case Item.Itemtype.Blätterwasser:    
+           //TODO     
+           break;
+           case Item.Itemtype.KettenRüstung: 
+           //TODO    
+           break;
+           case Item.Itemtype.PlattenstahlRüstung:   
+           //TODO  
+           break;
+           case Item.Itemtype.HolzSchild:   
+           //TODO  
+           break;
+           case Item.Itemtype.EisenSchild: 
+           //TODO    
+           break;
+           case Item.Itemtype.StahlSchild:   
+           //TODO       
+           break;
+           case Item.Itemtype.BeginnerBogen:   
+           //TODO  
+           break;
+           case Item.Itemtype.JägerBogen:  
+           //TODO   
+           break;
+           case Item.Itemtype.Akolythenstab:   
+           //TODO  
+           break;
+           case Item.Itemtype.Elementarstab:  
+           //TODO   
+           break;
+           case Item.Itemtype.MeisterStab:    
+           //TODO      
+           break;
+           case Item.Itemtype.Schwert:   
+           //TODO  
+           break;
+           case Item.Itemtype.KampfAxt:   
+           //TODO  
+           break;
+           case Item.Itemtype.StreitKolben:  
+           //TODO   
+           break;
+
+             
 
         }
     }
