@@ -63,6 +63,33 @@ public class Player : MonoBehaviour
     public GameObject canvasInventory;
     bool canvasInventoryisActive;
     public Vector2 position;
+    //ItemBools
+    public bool HealPotionNormalEquiped=false;
+    public bool HealPotionGroßEquiped=false;
+    public bool  ManaTrankEquiped=false;
+    public bool ManaTrankGroßEquiped=false;
+    public bool MettBrotEquiped=false;
+    public bool BlätterwasserEquiped=false;
+    public bool LederRüstungEquiped=false;
+    public bool KettenRüstungEquiped=false;
+    public bool PlattenstahlRüstungEquiped=false;
+    public bool HolzSchildEquiped=false;
+    public bool EisenSchildEquiped=false;
+    public bool StahlSchildEquiped=false;
+    public bool BeginnerBogenEquiped=false;
+    public bool JägerBogenEquiped=false;
+    public bool AkolythenstabEquiped=false;
+    public bool ElementarstabEquiped=false;
+    public bool MeisterStabEquiped=false;
+    public bool SchwertEquiped=false;
+    public bool KampfAxtEquiped=false;
+    public bool StreitKolbenEquiped=false;    
+
+   
+    
+                                                                                          
+
+
 
     void Start()
     {        	
@@ -80,7 +107,9 @@ public class Player : MonoBehaviour
 
         //InventoryShit
         inventory=new Inventory(UseItem);
-        ui_Inventory.setInventory(inventory);    
+        ui_Inventory.setInventory(inventory);  
+
+       
 
     }
 
@@ -121,12 +150,8 @@ public class Player : MonoBehaviour
         }
         //Debug Taste, alles möglich zum testen kann hier rein
         if(Input.GetKeyDown(KeyCode.X))
-        {
-            Debug.Log(string.Format("Levelstand" + level));
-            Debug.Log(string.Format("int" + this.inte));
-            Debug.Log(string.Format("str" + str));
-            Debug.Log(string.Format("dex" + dex));
-            
+        {   
+            Debug.Log(HolzSchildEquiped.ToString());
             
         }
         //Skilltree aufrufen
@@ -219,6 +244,38 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(attackpoint.position, attackrange);
     }   
 
+    void resetWeapons()
+    {
+    AkolythenstabEquiped=false;
+    ElementarstabEquiped=false;
+    MeisterStabEquiped=false;
+    SchwertEquiped=false;
+    KampfAxtEquiped=false;
+    StreitKolbenEquiped=false; 
+
+    }
+    void resetArmor()
+    {
+    LederRüstungEquiped=false;
+    KettenRüstungEquiped=false;
+    PlattenstahlRüstungEquiped=false;
+        
+    }
+    void resetShield()
+    {
+    HolzSchildEquiped=false;
+    EisenSchildEquiped=false;
+    StahlSchildEquiped=false;
+        
+    }
+
+    void resetBow()
+    {
+    BeginnerBogenEquiped=false;
+    JägerBogenEquiped=false;
+        
+    }
+
     private void UseItem(Item item)
     {
         switch(item.itemtype)
@@ -265,47 +322,64 @@ public class Player : MonoBehaviour
                 }
                 inventory.RemoveItem(new Item{itemtype = Item.Itemtype.MettBrot, amount=1});     
            break;
-           case Item.Itemtype.Blätterwasser:    
-           //TODO     
+           case Item.Itemtype.Blätterwasser:   
+           //TODO
            break;
-           case Item.Itemtype.KettenRüstung: 
-           //TODO    
+           case Item.Itemtype.LederRüstung:      
+            resetArmor();
+            LederRüstungEquiped=true;
            break;
-           case Item.Itemtype.PlattenstahlRüstung:   
-           //TODO  
+           case Item.Itemtype.KettenRüstung:         
+            resetArmor();
+            KettenRüstungEquiped=true;
+           break;
+           case Item.Itemtype.PlattenstahlRüstung:
+            resetArmor();
+            PlattenstahlRüstungEquiped=true;
            break;
            case Item.Itemtype.HolzSchild:   
-           //TODO  
+            resetShield();
+            HolzSchildEquiped=true;
            break;
            case Item.Itemtype.EisenSchild: 
-           //TODO    
+            resetShield();
+            EisenSchildEquiped=true;    
            break;
            case Item.Itemtype.StahlSchild:   
-           //TODO       
+            resetShield();
+            StahlSchildEquiped=true;          
            break;
            case Item.Itemtype.BeginnerBogen:   
-           //TODO  
+            resetBow();
+            BeginnerBogenEquiped=true;
            break;
            case Item.Itemtype.JägerBogen:  
-           //TODO   
+            resetBow();
+            JägerBogenEquiped=true;  
            break;
            case Item.Itemtype.Akolythenstab:   
-           //TODO  
+           resetWeapons();
+           AkolythenstabEquiped=true;
            break;
            case Item.Itemtype.Elementarstab:  
-           //TODO   
+           resetWeapons();
+           ElementarstabEquiped=true;  
            break;
            case Item.Itemtype.MeisterStab:    
-           //TODO      
+           resetWeapons();
+           MeisterStabEquiped=true;     
            break;
            case Item.Itemtype.Schwert:   
-           //TODO  
+           resetWeapons();
+           SchwertEquiped=true; 
            break;
            case Item.Itemtype.KampfAxt:   
-           //TODO  
+           resetWeapons();
+           KampfAxtEquiped=true; 
            break;
            case Item.Itemtype.StreitKolben:  
-           //TODO   
+           resetWeapons();
+           StreitKolbenEquiped=true; 
            break;
 
              
