@@ -145,6 +145,7 @@ public class Player : MonoBehaviour
             if(canvasInventoryisActive){
                 canvasInventory.SetActive(false);
                 canvasInventoryisActive=false;
+                
 
             }else{
                 canvasInventory.SetActive(true);
