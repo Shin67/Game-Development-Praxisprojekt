@@ -234,47 +234,6 @@ public class Player : MonoBehaviour
             //Werden mehrere Level auf einmal erreicht(was zu vermeiden ist) funzt das system trotzdem,
         }
     }
-    
-    void OnDrawGizmosSelected() //Schöner kreis im editor um den player herum, hat auf spiel keinen einfluss
-    {
-        if(attackpoint == null)
-        {
-            return;
-        }
-        Gizmos.DrawWireSphere(attackpoint.position, attackrange);
-    }   
-
-    void resetWeapons()
-    {
-    AkolythenstabEquiped=false;
-    ElementarstabEquiped=false;
-    MeisterStabEquiped=false;
-    SchwertEquiped=false;
-    KampfAxtEquiped=false;
-    StreitKolbenEquiped=false; 
-
-    }
-    void resetArmor()
-    {
-    LederRüstungEquiped=false;
-    KettenRüstungEquiped=false;
-    PlattenstahlRüstungEquiped=false;
-        
-    }
-    void resetShield()
-    {
-    HolzSchildEquiped=false;
-    EisenSchildEquiped=false;
-    StahlSchildEquiped=false;
-        
-    }
-
-    void resetBow()
-    {
-    BeginnerBogenEquiped=false;
-    JägerBogenEquiped=false;
-        
-    }
 
     private void UseItem(Item item)
     {
@@ -386,4 +345,46 @@ public class Player : MonoBehaviour
 
         }
     }
+    
+    void OnDrawGizmosSelected() //Schöner kreis im editor um den player herum, hat auf spiel keinen einfluss
+    {
+        if(attackpoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackpoint.position, attackrange);
+    }   
+
+    void resetWeapons()
+    {
+    AkolythenstabEquiped=false;
+    ElementarstabEquiped=false;
+    MeisterStabEquiped=false;
+    SchwertEquiped=false;
+    KampfAxtEquiped=false;
+    StreitKolbenEquiped=false; 
+
+    }
+    void resetArmor()
+    {
+    LederRüstungEquiped=false;
+    KettenRüstungEquiped=false;
+    PlattenstahlRüstungEquiped=false;
+        
+    }
+    void resetShield()
+    {
+    HolzSchildEquiped=false;
+    EisenSchildEquiped=false;
+    StahlSchildEquiped=false;        
+    }
+
+    void resetBow()
+    {
+    BeginnerBogenEquiped=false;
+    JägerBogenEquiped=false;
+        
+    }
+
+    
 }
