@@ -5,7 +5,7 @@
 - Interaktion von Objekten -> Teresa
 - Gegner können sehen und verfolgen den Spieler -> Lukas
 - Level Up -> Alex(fertig)
-- Lebensanzeige und Statusbar vom Spieler
+- Lebensanzeige und Statusbar vom Spieler -> Moritz
 - Erste Map (Sand Box)
 - Häuser betreten und Scenen wechsel -> alex (fertig)
 - Gegner Leben anzeigen -> Oscar
