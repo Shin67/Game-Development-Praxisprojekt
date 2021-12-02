@@ -13,6 +13,6 @@
 - SpeicherSystem -> Oscar
 - ---------------------------------------------------------------------------------------------
 - Kampfsystem -> Wer Bock hat, aber bitte jemand (alex, standard nah- und fernkampf)
--worldcontroller für wegversperrungen etc
--prefabs baum haus etc.
--nach kampfsystem: bosslogik
+- worldcontroller für wegversperrungen etc
+- prefabs baum haus etc.
+- nach kampfsystem: bosslogik
