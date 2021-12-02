@@ -11,4 +11,4 @@
 - Gegner Leben anzeigen -> Oscar
 - InventarSystem -> Alex
 - SpeicherSystem -> Oscar
-- 
+- Kampfsystem -> Wer Bock hat, aber bitte jemand
