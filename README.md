@@ -8,11 +8,11 @@
 - Lebensanzeige und Statusbar vom Spieler -> Moritz
 - Erste Map (Sand Box)
 - Häuser betreten und Scenen wechsel -> alex (fertig)
-- Gegner Leben anzeigen -> Oscar
+- Gegner Leben anzeigen -> 
 - InventarSystem -> Alex
-- SpeicherSystem -> Oscar
+- SpeicherSystem -> Erstmal auf Eis gelegt
 - ---------------------------------------------------------------------------------------------
 - Kampfsystem -> Wer Bock hat, aber bitte jemand (alex, standard nah- und fernkampf)
 - worldcontroller für wegversperrungen etc
-- prefabs baum haus etc.
+- prefabs baum haus etc. -> Oscar
 - nach kampfsystem: bosslogik
