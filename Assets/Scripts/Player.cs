@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
     public LayerMask enemyLayers;
     public float attackRate = 2;
     float nextAttackTime = 0f;
-    int healthPoints;
-    int maxHealth=100; //provisorischer wert
+    public int healthPoints;
+    public int maxHealth=100; //provisorischer wert
     //Attribute aus Spielmechaniken.pdf
     public int atk=40;  //physischer Schaden
     public int matk=0;  //magischer Schaden
@@ -85,7 +85,9 @@ public class Player : MonoBehaviour
     public bool KampfAxtEquiped=false;
     public bool StreitKolbenEquiped=false;    
 
-   
+   //UI Status Bar
+   public StatusBar healthBar;
+   public StatusBar manaBar;
     
                                                                                           
 
@@ -178,7 +180,14 @@ public class Player : MonoBehaviour
                 canvasInventory.SetActive(true);
                 canvasInventoryisActive=true;
             }
-        }      
+        }
+
+        //Update UI Statusbar
+        healthBar.setMaxValue(maxHealth);
+        healthBar.setValue(healthPoints);
+
+        manaBar.setMaxValue(MPMax);
+        manaBar.setValue(MP);     
     }
 
     void FixedUpdate()
