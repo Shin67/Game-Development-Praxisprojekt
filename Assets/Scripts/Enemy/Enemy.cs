@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     public int directionUnits;
     public int speed;
     public int playerDistance;
+    public int maxHealth;
+    public HealthBar healthBar;
     
     bool goingBack;
     bool playerFound;
@@ -22,6 +24,8 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        healthBar.SetMaxHealth(maxHealth);
+        currentHealth = maxHealth;
         goingBack = false;
         playerFound = false;
         directionCounter = 0;
@@ -72,6 +76,12 @@ public class Enemy : MonoBehaviour
             savedY = rigidbody.position.y;
         }
         
+    }
+
+    public void getDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetSlider(damage);
     }
 
     public void setPlayerFound(bool playerFound)
