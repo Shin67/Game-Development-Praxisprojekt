@@ -143,7 +143,9 @@ public class Player : MonoBehaviour
         //Attack
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            if(EquipedWeapon.weaponType == Weapon.WeaponType.Melee)
+            if(EquipedWeapon!=null)
+            {
+                if(EquipedWeapon.weaponType == Weapon.WeaponType.Melee)
             {
                 Debug.Log("Melee");
                 Attack();
@@ -151,6 +153,7 @@ public class Player : MonoBehaviour
             else{
                 RangeAttack();
             }
+            }         
 
             nextAttackTime= Time.time + 1f / attackRate;
         }

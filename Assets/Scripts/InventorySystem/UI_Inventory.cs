@@ -38,6 +38,7 @@ public class UI_Inventory : MonoBehaviour
     {
         foreach(Transform child in itemSlotContainer)
         {
+            
             if(child == itemSlotTemplate) continue ;     
             Destroy(child.gameObject);            
         }
