@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public LayerMask enemyLayers;
     public float attackRate = 2;
     float nextAttackTime = 0f;
-    public int healthPoints;
+    public int healthPoints=100;
     public int maxHealth=100; //provisorischer wert
     //Attribute aus Spielmechaniken.pdf
     public int atk=40;  //physischer Schaden
@@ -219,6 +219,22 @@ public class Player : MonoBehaviour
         checkLevelup();
     }
 
+    public void addHealth(int amount){
+        if (healthPoints + amount > maxHealth){
+            healthPoints = maxHealth;
+        } else {
+            healthPoints += amount;
+        }
+        
+    }
+
+    public void addMP(int amount){
+        if (MP + amount > MPMax){
+            MP = MPMax;
+        } else {
+            MP += amount;
+        }
+    }
     void checkLevelup()
     {
         int temp =0;
