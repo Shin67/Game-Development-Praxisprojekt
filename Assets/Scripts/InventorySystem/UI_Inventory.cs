@@ -90,7 +90,26 @@ public class UI_Inventory : MonoBehaviour
         Item duplicate = new Item {itemtype=item.itemtype, amount=item.amount};
         inventory.RemoveItem(item);
         ItemWorld.DropItem(player.position, duplicate);
-        }else{
+        if(item.isequipped==true)
+            {
+                if(item.GetItemClass() == Item.ItemClass.Weapon)
+                {
+                    Debug.Log("Weapon gedroppt");
+                    player.EquipedWeapon=null;
+                }
+                if(item.GetItemClass() == Item.ItemClass.Armor)
+                {
+                    Debug.Log("Armor gedroppt");
+                    player.EquipedArmor=null;
+                }
+                if(item.GetItemClass() == Item.ItemClass.Shield)
+                {
+                    Debug.Log("Shield gedroppt");
+                    player.EquipedShield=null;
+                }
+            }        
+        }else
+        {
         Debug.Log("use");
         inventory.UseItem(item);
         }
