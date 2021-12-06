@@ -30,14 +30,16 @@ public class DialogueManager : MonoBehaviour
     //Etwas crappy, dass ich das hier rufe. Besser wäre wenn das interactable Script sofort den Interact-Button mitgibt, sodass wir keine 2 seperaten InteractKeys haben maybe? Not sure.
     void Update(){
 
-        if (currentBoxType == TextBoxType.SentenceBox || currentBoxType == TextBoxType.EventBox){
+        if (currentBoxType == TextBoxType.SentenceBox || currentBoxType == TextBoxType.HiddenBox){
             if (dialogueDelay <= 0 && Input.GetKeyDown(interactionKey)){
                 DisplayNextBox();
             }
         }
 
         //Dialogue Options
-        if (currentBoxType == TextBoxType.QuestionBox){
+        //Check if any number from 1-5 is pressed
+        if (currentBoxType == TextBoxType.ChoiceBox){
+            //Set input manually to 0, if it stays at 0 no Key was pressed
             int input = 0;
             if (Input.GetKeyDown(KeyCode.Alpha1)){
                 input = 1;
@@ -51,15 +53,25 @@ public class DialogueManager : MonoBehaviour
                 input = 5;
             }
 
+            //Check if a choice was made and also if the current TextBox even allows this choice.
+            //If yes, display the corresponding selection
             if (input != 0 && input <= maxAcceptableAnswer){
-                Reply answer = currentBox.replies[input-1];
-                nameText.text = answer.reactingNPCName;
+                Choice answer = currentBox.choices[input-1];
+                nameText.text = answer.reactingName;
+
+                //Type out the corresponding reaction
                 StopAllCoroutines();
                 StartCoroutine(TypeSentence(answer.reaction));
+
+                //If the Choice has a specified ReactionEvent, play that Event
+                if(answer.reactionEvent != null){
+                    answer.reactionEvent.Invoke();
+                }
+
+                //Set currentBoxType manually to sentenceBox, so the user can once again press interactionKey to progress Dialogue
                 currentBoxType = TextBoxType.SentenceBox;
             }
-
-        }
+    }
         
         
         if (dialogueDelay > 0){
@@ -87,9 +99,12 @@ public class DialogueManager : MonoBehaviour
         }
         //60 frames of delay
         dialogueDelay = 60;
+
+        //Get next Box and assign acknowledge it as current Box
         TextBox box = textBoxes.Dequeue();
         currentBoxType = box.typeOfBox;
         currentBox = box;
+
         //Je nach verschiedener Box muss was anderes gemacht werden
         switch (currentBoxType){
             //Bei einer SentenceBox kann die nächste Box einfach getyped werden
@@ -98,23 +113,25 @@ public class DialogueManager : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(TypeSentence(box.text));
                 break;
-            //Bei einer QuestionBox muss man zuerst die Option angeben, und festlegen was die höchste erlaubte Antwort ist.
-            //In der Update Methode wird im Fall dass currentBoxType == QuestionBox abgefragt, ob die Tasten 1,2,3,4...len gedrückt werden
+            //Bei einer ChoiceBox muss man zuerst die Option angeben, und festlegen was die höchste erlaubte Antwort ist.
+            //In der Update Methode wird im Fall dass currentBoxType == ChoiceBox abgefragt, ob die Tasten 1,2,3,4...len gedrückt werden
             //Wenn eine zulässige Auswahl getroffen wurde, dann wird die zugehörige Antwort angezeigt und der currentBoxType auf SentenceBox gesetzt, damit man die nächste Box anzeigen kann
-            case TextBoxType.QuestionBox:
+            case TextBoxType.ChoiceBox:
                 string options = "";
-                int len = box.replies.Length;
+                int len = box.choices.Length;
                 for (int i = 0; i < len; i++){
-                    options += (i+1) + " : " + box.replies[i].answer + "\n";
+                    options += (i+1) + " : " + box.choices[i].option + "\n";
                 }
                 maxAcceptableAnswer = len;
                 StopAllCoroutines();
                 StartCoroutine(TypeSentence(options));
                 break;
-            //Bei einer EventBox muss das Event nur invoked werden. Die bestehende TextBox wird nicht geändert.
-            case TextBoxType.EventBox:
-                box.toExecute.Invoke();
-                break;
+            
+        }
+
+        //If this Box has an Event, call the Event
+        if (box.toExecute != null){
+            box.toExecute.Invoke();
         }
         
     }
@@ -125,11 +142,12 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray()){
             dialogueText.text += letter;
             //Wait for waitTime many seconds
-            float waitTime = 0.03f;
+            float waitTime = 0.02f;
             yield return new WaitForSeconds(waitTime);
         }
     }
 
+    //End Dialogue and make sure the animator gets the notice
     void EndDialogue(){
         activeDialogue = false;
         animator.SetBool("IsVisible", false);
