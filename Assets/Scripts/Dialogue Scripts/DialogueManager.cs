@@ -20,6 +20,19 @@ public class DialogueManager : MonoBehaviour
     private TextBox currentBox;
     private int maxAcceptableAnswer;
 
+    //Singleton Pattern
+    private static DialogueManager instance;
+
+    private void Awake(){
+        if (instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }else{
+            Destroy(gameObject);
+        }
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +90,10 @@ public class DialogueManager : MonoBehaviour
         if (dialogueDelay > 0){
             dialogueDelay -= 1;
         }
+    }
+
+    public static DialogueManager getInstance(){
+        return instance;
     }
 
     //Start Dialogue Methode, wird aus anderem Skript gerufen

@@ -69,7 +69,7 @@ public class InteractableNPC : MonoBehaviour
     public void TriggerDialogue(){
         busyWithInteraction = true;
         Debug.Log(activeDialogue.textBoxen.Length);
-        FindObjectOfType<DialogueManager>().StartDialogue(activeDialogue);
+        DialogueManager.getInstance().StartDialogue(activeDialogue);
     }
 
     public void setActiveDialogue(int index){
