@@ -16,6 +16,10 @@ public class Player : MonoBehaviour
 
     //Kampf shit
     public Transform attackpoint;
+    public Transform attackpointLeft;
+    public Transform attackpointRight;
+    public Transform attackpointUp;
+    public Transform attackpointDown;
     public float attackrange = 0.5f;
     public LayerMask enemyLayers;
     public float attackRate = 2;
@@ -26,6 +30,12 @@ public class Player : MonoBehaviour
     public Weapon EquipedWeapon;
     public Shield EquipedShield;
     public Armor EquipedArmor;
+    public bool meleeAttack=false;
+    //Fernkampfshit
+    public GameObject ArrowPrefabLeft;   
+    public GameObject ArrowPrefabRight;    
+    public GameObject ArrowPrefabUp;    
+    public GameObject ArrowPrefabDown; 
     //Attribute aus Spielmechaniken.pdf
     public int atk=40;  //physischer Schaden
     public int matk=0;  //magischer Schaden
@@ -87,7 +97,16 @@ public class Player : MonoBehaviour
 
     public Armor LederRüstung = new Armor(10);     
     public Armor KettenRüstung = new Armor(20); 
-    public Armor PlattenstahlRüstung = new Armor(30);                                                                              
+    public Armor PlattenstahlRüstung = new Armor(30);   
+
+    public enum Direction
+   {
+       Left,
+       Right,
+       Up,
+       Down
+
+   }                                                                           
 
     void Start()
     {        	
@@ -138,25 +157,61 @@ public class Player : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
         //Kampf shit
-        if(Time.time >= nextAttackTime)
+        if(EquipedWeapon!=null){
+            if(EquipedWeapon.weaponType == Weapon.WeaponType.Melee)
         {
-        //Attack
-        if(Input.GetKeyDown(KeyCode.Space))
+            meleeAttack=true;
+        }
+        else{
+            meleeAttack=false;
+        }
+        }
+        
+        if(Time.time >= nextAttackTime)
         {
             if(EquipedWeapon!=null)
             {
-                if(EquipedWeapon.weaponType == Weapon.WeaponType.Melee)
-            {
-                Debug.Log("Melee");
-                Attack();
-            }
-            else{
-                RangeAttack();
-            }
-            }         
 
-            nextAttackTime= Time.time + 1f / attackRate;
-        }
+                if(Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    if(meleeAttack){
+                        Attack(Direction.Up);
+                    }else{
+                        RangeAttack(Direction.Up);
+                        Debug.Log("UP range attack");
+                    }
+                    nextAttackTime= Time.time + 1f / attackRate;
+                    
+                }
+                if(Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    if(meleeAttack){
+                        Attack(Direction.Down);
+                    }else{
+                        RangeAttack(Direction.Down);
+                    }
+                    nextAttackTime= Time.time + 1f / attackRate;
+                }
+                if(Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    if(meleeAttack){
+                        Attack(Direction.Left);
+                    }else{
+                        RangeAttack(Direction.Left);
+                    }
+                    nextAttackTime= Time.time + 1f / attackRate;
+                }
+                if(Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    if(meleeAttack){
+                        Attack(Direction.Right);
+                    }else{
+                        RangeAttack(Direction.Right);
+                    }
+                    nextAttackTime= Time.time + 1f / attackRate;
+                }
+                    }      
+
         }
         //Debug Taste, alles möglich zum testen kann hier rein
         if(Input.GetKeyDown(KeyCode.X))
@@ -205,8 +260,32 @@ public class Player : MonoBehaviour
         position=rb.position;
     }
 
-    void Attack()
+    void Attack(Direction direction)
     {
+        if(direction == Direction.Left)
+        {
+            Debug.Log("Left");
+            //animator.SetTrigger("Attack_Left");
+            attackpoint=attackpointLeft;
+        }
+        if(direction == Direction.Right)
+        {
+            Debug.Log("right");
+            //animator.SetTrigger("Attack_Right");
+            attackpoint=attackpointRight;
+        }
+        if(direction == Direction.Up)
+        {
+            Debug.Log("up");
+            //animator.SetTrigger("Attack_Up");
+            attackpoint=attackpointUp;
+        }
+        if(direction == Direction.Down)
+        {
+            Debug.Log("down");
+            //animator.SetTrigger("Attack_Down");
+            attackpoint=attackpointDown;
+        }
         //Animation
         animator.SetTrigger("Attack");
         //Attack enemies
@@ -221,9 +300,26 @@ public class Player : MonoBehaviour
         }
     } 
 
-    void RangeAttack()
+
+        
+    void RangeAttack(Direction direction)
     {
-        //Hier Könnte ihre RangeAttacke stehen
+        if(direction == Direction.Left)
+        {               
+            Instantiate(ArrowPrefabLeft, attackpointLeft.position, attackpoint.rotation);
+        }
+        if(direction == Direction.Right)
+        {
+            Instantiate(ArrowPrefabRight, attackpointRight.position, attackpoint.rotation);
+        }
+        if(direction == Direction.Up)
+        {
+            Instantiate(ArrowPrefabUp, attackpointUp.position, attackpoint.rotation);
+        }
+        if(direction == Direction.Down)
+        {
+            Instantiate(ArrowPrefabDown, attackpointDown.position, attackpoint.rotation);
+        }             
     }
 
     public void addExp(int xp)
