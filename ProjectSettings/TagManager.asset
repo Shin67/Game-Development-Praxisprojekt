@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Enemies
   - npcLayer
-  - 
+  - Blocking
   - 
   - 
   - 
@@ -45,6 +45,9 @@ TagManager:
     locked: 0
   - name: Floor
     uniqueID: 2048077361
+    locked: 0
+  - name: Objects on Floor
+    uniqueID: 1315149659
     locked: 0
   - name: Actor
     uniqueID: 929875741
