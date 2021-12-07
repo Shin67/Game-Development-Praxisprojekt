@@ -12,7 +12,12 @@ public class Enemy : MonoBehaviour
     public int playerDistance;
     public int maxHealth;
     public HealthBar healthBar;
-    
+
+
+    float[][] watchUp = { new float[] { -2, 2.5f }, new float[] { 2, 2.5f } };
+    float[][] watchDown = { new float[] { -2, -2 }, new float[] { 2, -2 } };
+    float[][] watchLeft = { new float[] { -2.5f, 2 }, new float[] { -2.5f, -2 } };
+    float[][] watchRight = { new float[] { 2.5f, 2 }, new float[] { 2.5f, -2 } };
     bool goingBack;
     bool playerFound;
     int directionCounter;
