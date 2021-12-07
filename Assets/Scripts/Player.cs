@@ -16,12 +16,26 @@ public class Player : MonoBehaviour
 
     //Kampf shit
     public Transform attackpoint;
+    public Transform attackpointLeft;
+    public Transform attackpointRight;
+    public Transform attackpointUp;
+    public Transform attackpointDown;
     public float attackrange = 0.5f;
     public LayerMask enemyLayers;
     public float attackRate = 2;
     float nextAttackTime = 0f;
     public int healthPoints=100;
     public int maxHealth=100; //provisorischer wert
+
+    public Weapon EquipedWeapon;
+    public Shield EquipedShield;
+    public Armor EquipedArmor;
+    public bool meleeAttack=false;
+    //Fernkampfshit
+    public GameObject ArrowPrefabLeft;   
+    public GameObject ArrowPrefabRight;    
+    public GameObject ArrowPrefabUp;    
+    public GameObject ArrowPrefabDown; 
     //Attribute aus Spielmechaniken.pdf
     public int atk=40;  //physischer Schaden
     public int matk=0;  //magischer Schaden
@@ -62,36 +76,37 @@ public class Player : MonoBehaviour
     //Canvas für Inventar
     public GameObject canvasInventory;
     bool canvasInventoryisActive;
-    public Vector2 position;
-    //ItemBools
-    public bool HealPotionNormalEquiped=false;
-    public bool HealPotionGroßEquiped=false;
-    public bool  ManaTrankEquiped=false;
-    public bool ManaTrankGroßEquiped=false;
-    public bool MettBrotEquiped=false;
-    public bool BlätterwasserEquiped=false;
-    public bool LederRüstungEquiped=false;
-    public bool KettenRüstungEquiped=false;
-    public bool PlattenstahlRüstungEquiped=false;
-    public bool HolzSchildEquiped=false;
-    public bool EisenSchildEquiped=false;
-    public bool StahlSchildEquiped=false;
-    public bool BeginnerBogenEquiped=false;
-    public bool JägerBogenEquiped=false;
-    public bool AkolythenstabEquiped=false;
-    public bool ElementarstabEquiped=false;
-    public bool MeisterStabEquiped=false;
-    public bool SchwertEquiped=false;
-    public bool KampfAxtEquiped=false;
-    public bool StreitKolbenEquiped=false;    
+    public Vector2 position; 
 
    //UI Status Bar
    public StatusBar healthBar;
    public StatusBar manaBar;
+    //potentielles Equipment
+    public Weapon BeginnerBogen = new Weapon(10,Weapon.WeaponType.Bow);
+    public Weapon JägerBogen = new Weapon(20,Weapon.WeaponType.Bow);
+    public Weapon Akolythenstab = new Weapon(40,Weapon.WeaponType.Staff);
+    public Weapon Elementarstab = new Weapon(60,Weapon.WeaponType.Staff);
+    public Weapon MeisterStab = new Weapon(80,Weapon.WeaponType.Staff);
+    public Weapon Schwert = new Weapon(40,Weapon.WeaponType.Melee);
+    public Weapon KampfAxt = new Weapon(50,Weapon.WeaponType.Melee);
+    public Weapon StreitKolben = new Weapon(60,Weapon.WeaponType.Melee); 
     
-                                                                                          
+    public Shield HolzSchild = new Shield(10,10);    
+    public Shield EisenSchild = new Shield(20,15);   
+    public Shield StahlSchild = new Shield(30,20); 
 
+    public Armor LederRüstung = new Armor(10);     
+    public Armor KettenRüstung = new Armor(20); 
+    public Armor PlattenstahlRüstung = new Armor(30);   
 
+    public enum Direction
+   {
+       Left,
+       Right,
+       Up,
+       Down
+
+   }                                                                           
 
     void Start()
     {        	
@@ -110,8 +125,9 @@ public class Player : MonoBehaviour
         //InventoryShit
         inventory=new Inventory(UseItem);
         ui_Inventory.setInventory(inventory);  
-
-       
+        //Standardwaffen erstellen
+        
+      
 
     }
 
@@ -141,19 +157,66 @@ public class Player : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
         //Kampf shit
+        if(EquipedWeapon!=null){
+            if(EquipedWeapon.weaponType == Weapon.WeaponType.Melee)
+        {
+            meleeAttack=true;
+        }
+        else{
+            meleeAttack=false;
+        }
+        }
+        
         if(Time.time >= nextAttackTime)
         {
-        //Attack
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Attack();
-            nextAttackTime= Time.time + 1f / attackRate;
-        }
+            if(EquipedWeapon!=null)
+            {
+
+                if(Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    if(meleeAttack){
+                        Attack(Direction.Up);
+                    }else{
+                        RangeAttack(Direction.Up);
+                        Debug.Log("UP range attack");
+                    }
+                    nextAttackTime= Time.time + 1f / attackRate;
+                    
+                }
+                if(Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    if(meleeAttack){
+                        Attack(Direction.Down);
+                    }else{
+                        RangeAttack(Direction.Down);
+                    }
+                    nextAttackTime= Time.time + 1f / attackRate;
+                }
+                if(Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    if(meleeAttack){
+                        Attack(Direction.Left);
+                    }else{
+                        RangeAttack(Direction.Left);
+                    }
+                    nextAttackTime= Time.time + 1f / attackRate;
+                }
+                if(Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    if(meleeAttack){
+                        Attack(Direction.Right);
+                    }else{
+                        RangeAttack(Direction.Right);
+                    }
+                    nextAttackTime= Time.time + 1f / attackRate;
+                }
+                    }      
+
         }
         //Debug Taste, alles möglich zum testen kann hier rein
         if(Input.GetKeyDown(KeyCode.X))
         {   
-            Debug.Log(HolzSchildEquiped.ToString());
+            
             
         }
         //Skilltree aufrufen
@@ -197,8 +260,32 @@ public class Player : MonoBehaviour
         position=rb.position;
     }
 
-    void Attack()
+    void Attack(Direction direction)
     {
+        if(direction == Direction.Left)
+        {
+            Debug.Log("Left");
+            //animator.SetTrigger("Attack_Left");
+            attackpoint=attackpointLeft;
+        }
+        if(direction == Direction.Right)
+        {
+            Debug.Log("right");
+            //animator.SetTrigger("Attack_Right");
+            attackpoint=attackpointRight;
+        }
+        if(direction == Direction.Up)
+        {
+            Debug.Log("up");
+            //animator.SetTrigger("Attack_Up");
+            attackpoint=attackpointUp;
+        }
+        if(direction == Direction.Down)
+        {
+            Debug.Log("down");
+            //animator.SetTrigger("Attack_Down");
+            attackpoint=attackpointDown;
+        }
         //Animation
         animator.SetTrigger("Attack");
         //Attack enemies
@@ -212,6 +299,28 @@ public class Player : MonoBehaviour
             
         }
     } 
+
+
+        
+    void RangeAttack(Direction direction)
+    {
+        if(direction == Direction.Left)
+        {               
+            Instantiate(ArrowPrefabLeft, attackpointLeft.position, attackpoint.rotation);
+        }
+        if(direction == Direction.Right)
+        {
+            Instantiate(ArrowPrefabRight, attackpointRight.position, attackpoint.rotation);
+        }
+        if(direction == Direction.Up)
+        {
+            Instantiate(ArrowPrefabUp, attackpointUp.position, attackpoint.rotation);
+        }
+        if(direction == Direction.Down)
+        {
+            Instantiate(ArrowPrefabDown, attackpointDown.position, attackpoint.rotation);
+        }             
+    }
 
     public void addExp(int xp)
     {
@@ -309,61 +418,75 @@ public class Player : MonoBehaviour
            case Item.Itemtype.Blätterwasser:   
            //TODO
            break;
-           case Item.Itemtype.LederRüstung:      
-            resetArmor();
-            LederRüstungEquiped=true;
+           case Item.Itemtype.LederRüstung:  
+           EquipedArmor = LederRüstung;
+           item.isequipped=true;    
+            //TODO
            break;
-           case Item.Itemtype.KettenRüstung:         
-            resetArmor();
-            KettenRüstungEquiped=true;
+           case Item.Itemtype.KettenRüstung:  
+           EquipedArmor = KettenRüstung;
+           item.isequipped=true;       
+            //TODO
            break;
            case Item.Itemtype.PlattenstahlRüstung:
-            resetArmor();
-            PlattenstahlRüstungEquiped=true;
+           EquipedArmor = PlattenstahlRüstung;
+           item.isequipped=true;
+            //TODO
            break;
            case Item.Itemtype.HolzSchild:   
-            resetShield();
-            HolzSchildEquiped=true;
+           item.isequipped=true;
+           EquipedShield = HolzSchild;
+            //TODO
            break;
            case Item.Itemtype.EisenSchild: 
-            resetShield();
-            EisenSchildEquiped=true;    
+           item.isequipped=true;
+           EquipedShield = EisenSchild;
+            //TODO   
            break;
-           case Item.Itemtype.StahlSchild:   
-            resetShield();
-            StahlSchildEquiped=true;          
+           case Item.Itemtype.StahlSchild:  
+           item.isequipped=true; 
+           EquipedShield = StahlSchild;
+            //TODO          
            break;
            case Item.Itemtype.BeginnerBogen:   
-            resetBow();
-            BeginnerBogenEquiped=true;
+            //TODO
+            EquipedWeapon = BeginnerBogen;
+            item.isequipped=true;
            break;
            case Item.Itemtype.JägerBogen:  
-            resetBow();
-            JägerBogenEquiped=true;  
+            //TODO  
+            EquipedWeapon = JägerBogen;
+            item.isequipped=true;
            break;
            case Item.Itemtype.Akolythenstab:   
-           resetWeapons();
-           AkolythenstabEquiped=true;
+           //TODO
+           EquipedWeapon = Akolythenstab;
+           item.isequipped=true;
            break;
            case Item.Itemtype.Elementarstab:  
-           resetWeapons();
-           ElementarstabEquiped=true;  
+           //TODO 
+           EquipedWeapon =Elementarstab;
+           item.isequipped=true;
            break;
            case Item.Itemtype.MeisterStab:    
-           resetWeapons();
-           MeisterStabEquiped=true;     
+           //TODO   
+           EquipedWeapon = MeisterStab;
+           item.isequipped=true;
            break;
            case Item.Itemtype.Schwert:   
-           resetWeapons();
-           SchwertEquiped=true; 
+           //TODO 
+           EquipedWeapon = Schwert;
+           item.isequipped=true;
            break;
            case Item.Itemtype.KampfAxt:   
-           resetWeapons();
-           KampfAxtEquiped=true; 
+           //TODO
+           EquipedWeapon = KampfAxt;
+           item.isequipped=true;
            break;
            case Item.Itemtype.StreitKolben:  
-           resetWeapons();
-           StreitKolbenEquiped=true; 
+           //TODO 
+           EquipedWeapon = StreitKolben;
+           item.isequipped=true;
            break;
 
              
@@ -380,36 +503,6 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(attackpoint.position, attackrange);
     }   
 
-    void resetWeapons()
-    {
-    AkolythenstabEquiped=false;
-    ElementarstabEquiped=false;
-    MeisterStabEquiped=false;
-    SchwertEquiped=false;
-    KampfAxtEquiped=false;
-    StreitKolbenEquiped=false; 
-
-    }
-    void resetArmor()
-    {
-    LederRüstungEquiped=false;
-    KettenRüstungEquiped=false;
-    PlattenstahlRüstungEquiped=false;
-        
-    }
-    void resetShield()
-    {
-    HolzSchildEquiped=false;
-    EisenSchildEquiped=false;
-    StahlSchildEquiped=false;        
-    }
-
-    void resetBow()
-    {
-    BeginnerBogenEquiped=false;
-    JägerBogenEquiped=false;
-        
-    }
 
     
 }
