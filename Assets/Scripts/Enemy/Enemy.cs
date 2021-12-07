@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
     float savedX;
     float savedY;
 
-
     private void Start()
     {
         healthBar.SetMaxHealth(maxHealth);
@@ -30,7 +29,6 @@ public class Enemy : MonoBehaviour
         playerFound = false;
         directionCounter = 0;
         rigidbody = GetComponent<Rigidbody2D>();
-        
     }
 
     private void FixedUpdate()
@@ -49,7 +47,7 @@ public class Enemy : MonoBehaviour
             }
         } else if (goingBack)
         {
-            Vector2 goingBackDirection = (new Vector2(savedX, savedY).normalized - new Vector2(rigidbody.position.x, rigidbody.position.y).normalized) * speed;
+            Vector2 goingBackDirection = (new Vector2(savedX, savedY).normalized - new Vector2(rigidbody.position.normalized.x, rigidbody.position.normalized.y).normalized) * speed;
           
             rigidbody.velocity = goingBackDirection;
             Debug.Log(goingBackDirection.x);
