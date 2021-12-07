@@ -1,11 +1,11 @@
 # Game Development Praxisprojekt
 ## Erster Sprint
 - Start Menü -> Oscar
-- Dialoge -> Moritz (TODO: Verschiedene Antwortmöglichkeiten, die in verschiedenen Dialogen resultieren kann; Dialog kann Event triggern, zu Singleton)
+- Dialoge -> Moritz (TODO: Support für Text-Asset für leichteres Bearbeiten; zu Singleton)
 - Interaktion von Objekten -> Teresa
 - Gegner können sehen und verfolgen den Spieler -> fertig
 - Level Up -> fertig
-- Lebensanzeige und Statusbar vom Spieler -> Moritz
+- Lebensanzeige und Statusbar vom Spieler -> fertig
 - Erste Map (Sand Box)
 - Häuser betreten und Scenen wechsel -> fertig
 - Gegner Leben anzeigen -> Lukas
