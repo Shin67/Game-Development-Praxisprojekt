@@ -45,6 +45,9 @@ public class Player : MonoBehaviour
     public bool[] skillarray= new bool[9];      // haben ist besser als brauchen ¯\_(ツ)_/¯  
     //canvasSkilltree für skilltree
     public GameObject canvasSkilltree;
+    public AudioSource audioSource;
+    public AudioClip swordSound;
+    public AudioClip walkingSound;
     bool canvasSkilltreeisActive;
     //Levelsystem
     public int exp=0;
@@ -93,6 +96,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {        	
+        audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);  //damit player in neuer szene erhalten bleibt
         //Bug rudimentär gefixed, keine ahnung was das problem eigentlich ist ¯\_(ツ)_/¯
         canvasSkilltree.SetActive(false);
@@ -132,6 +136,20 @@ public class Player : MonoBehaviour
 
     void Update()
     {   
+        //Movement sound
+        if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            audioSource.clip = walkingSound;
+            audioSource.volume = 0.04f;
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        } else
+        {
+            audioSource.Stop();
+        }
+
         //Movement        
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -144,6 +162,8 @@ public class Player : MonoBehaviour
         //Attack
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            audioSource.clip = walkingSound;
+            audioSource.Play();
             Attack();
             nextAttackTime= Time.time + 1f / attackRate;
         }
@@ -190,6 +210,7 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
+       
         //Animation
         animator.SetTrigger("Attack");
         //Attack enemies

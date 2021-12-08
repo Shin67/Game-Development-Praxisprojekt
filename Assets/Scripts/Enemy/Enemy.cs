@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public int playerDistance;
     public int maxHealth;
     public HealthBar healthBar;
+    public AudioClip enemySound;
+    
 
 
     float[][] watchUp = { new float[] { -2, 2.5f }, new float[] { 2, 2.5f } };
@@ -21,6 +23,7 @@ public class Enemy : MonoBehaviour
     bool goingBack;
     bool playerFound;
     int directionCounter;
+    AudioSource audioSource;
     Rigidbody2D rigidbody;
     GameObject player;
     float savedX;
@@ -28,6 +31,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         healthBar.SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
         goingBack = false;
@@ -40,6 +44,13 @@ public class Enemy : MonoBehaviour
     {
         if (playerFound)
         {
+            audioSource.volume = 0.05f;
+            audioSource.clip = enemySound;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        
             player = GameObject.FindWithTag("Player");
             Debug.Log("Gegner: " + transform.position);
             Debug.Log("Player: " + player.transform.position);
