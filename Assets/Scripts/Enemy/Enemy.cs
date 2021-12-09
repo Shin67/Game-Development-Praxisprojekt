@@ -26,11 +26,13 @@ public class Enemy : MonoBehaviour
     AudioSource audioSource;
     Rigidbody2D rigidbody;
     GameObject player;
+    PolygonCollider2D viewArea;
     float savedX;
     float savedY;
 
     private void Start()
     {
+        viewArea = GetComponentInChildren<PolygonCollider2D>();
         audioSource = GetComponent<AudioSource>();
         healthBar.SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
@@ -38,10 +40,26 @@ public class Enemy : MonoBehaviour
         playerFound = false;
         directionCounter = 0;
         rigidbody = GetComponent<Rigidbody2D>();
+
     }
 
     private void FixedUpdate()
     {
+        if (direction.x > 0)
+        {
+            viewArea.SetPath(0, new Vector2[] { new Vector2(0, 0.5f), new Vector2(watchRight[0][0], watchRight[0][1]), new Vector2(watchRight[1][0], watchRight[1][1]) });
+        } else if (direction.x < 0)
+        {
+            viewArea.SetPath(0, new Vector2[] { new Vector2(0, 0.5f), new Vector2(watchLeft[0][0], watchLeft[0][1]), new Vector2(watchLeft[1][0], watchLeft[1][1]) });
+        } else if (direction.y > 0)
+        {
+            viewArea.SetPath(0, new Vector2[] { new Vector2(0, 0.5f), new Vector2(watchUp[0][0], watchUp[0][1]), new Vector2(watchUp[1][0], watchUp[1][1]) });
+        } else if (direction.y < 0)
+        {
+            viewArea.SetPath(0, new Vector2[] { new Vector2(0, 0.5f), new Vector2(watchDown[0][0], watchDown[0][1]), new Vector2(watchDown[1][0], watchDown[1][1]) });
+        }
+
+
         if (playerFound)
         {
             audioSource.volume = 0.05f;

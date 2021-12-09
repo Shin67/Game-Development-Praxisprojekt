@@ -86,9 +86,9 @@ public class Player : MonoBehaviour
     public bool MeisterStabEquiped=false;
     public bool SchwertEquiped=false;
     public bool KampfAxtEquiped=false;
-    public bool StreitKolbenEquiped=false;    
+    public bool StreitKolbenEquiped=false;
 
-   
+    AudioSource attackSound;
     
                                                                                           
 
@@ -96,7 +96,12 @@ public class Player : MonoBehaviour
 
     void Start()
     {        	
-        audioSource = GetComponent<AudioSource>();
+        
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        audioSources[0].clip = walkingSound;
+        audioSources[1].clip = swordSound;
+        audioSource = audioSources[0];
+        attackSound = audioSources[1];
         DontDestroyOnLoad(gameObject);  //damit player in neuer szene erhalten bleibt
         //Bug rudimentär gefixed, keine ahnung was das problem eigentlich ist ¯\_(ツ)_/¯
         canvasSkilltree.SetActive(false);
@@ -111,9 +116,7 @@ public class Player : MonoBehaviour
 
         //InventoryShit
         inventory=new Inventory(UseItem);
-        ui_Inventory.setInventory(inventory);  
-
-       
+        ui_Inventory.setInventory(inventory);
 
     }
 
@@ -139,7 +142,6 @@ public class Player : MonoBehaviour
         //Movement sound
         if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            audioSource.clip = walkingSound;
             audioSource.volume = 0.04f;
             if(!audioSource.isPlaying)
             {
@@ -162,8 +164,8 @@ public class Player : MonoBehaviour
         //Attack
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            audioSource.clip = walkingSound;
-            audioSource.Play();
+                attackSound.volume = 0.4f;
+            attackSound.Play();
             Attack();
             nextAttackTime= Time.time + 1f / attackRate;
         }
