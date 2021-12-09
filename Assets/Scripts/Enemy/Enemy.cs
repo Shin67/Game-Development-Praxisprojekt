@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public int speed;
     public int playerDistance;
     public int maxHealth;
-    public HealthBar healthBar;
+    //public HealthBar healthBar;
     public AudioClip enemySound;
     
 
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     {
         viewArea = GetComponentInChildren<PolygonCollider2D>();
         audioSource = GetComponent<AudioSource>();
-        healthBar.SetMaxHealth(maxHealth);
+        //healthBar.SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
         goingBack = false;
         playerFound = false;
@@ -70,8 +70,6 @@ public class Enemy : MonoBehaviour
             }
         
             player = GameObject.FindWithTag("Player");
-            //Debug.Log("Gegner: " + transform.position);
-            //Debug.Log("Player: " + player.transform.position);
             Vector2 playerCoord = new Vector2((player.transform.position - transform.position).normalized.x, (player.transform.position - transform.position).normalized.y);
             rigidbody.velocity = playerCoord * speed;
             if (Vector3.Distance(player.transform.position, rigidbody.transform.position) >= playerDistance)
@@ -84,18 +82,14 @@ public class Enemy : MonoBehaviour
             Vector2 goingBackDirection = (new Vector2(savedX, savedY).normalized - new Vector2(rigidbody.position.normalized.x, rigidbody.position.normalized.y).normalized) * speed;
           
             rigidbody.velocity = goingBackDirection;
-            //Debug.Log(goingBackDirection.x);
             if (goingBackDirection.x < 0.1 && goingBackDirection.y < 0.1)
             {
-                //Debug.Log(goingBackDirection);
                 goingBack = false;
             }
         } else
         {
             if (directionCounter <= directionUnits && !goingBack && !playerFound)
             {
-                //Debug.Log("Player found: " + playerFound);
-                //Debug.Log("Going back: " + goingBack);
                 rigidbody.velocity = direction;
                 directionCounter ++;
             } else
@@ -113,7 +107,7 @@ public class Enemy : MonoBehaviour
     public void getDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetSlider(damage);
+        //healthBar.SetSlider(damage);
     }
 
     public void setPlayerFound(bool playerFound)

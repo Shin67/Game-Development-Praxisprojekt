@@ -79,7 +79,6 @@ public class Player : MonoBehaviour
     //Canvas für Inventar
     public GameObject canvasInventory;
     bool canvasInventoryisActive;
-<<<<<<< HEAD
     public Vector2 position;
     //ItemBools
     public bool HealPotionNormalEquiped=false;
@@ -104,8 +103,6 @@ public class Player : MonoBehaviour
     public bool StreitKolbenEquiped=false;
 
     AudioSource attackSound;
-=======
-    public Vector2 position; 
 
    //UI Status Bar
    public StatusBar healthBar;
@@ -119,7 +116,6 @@ public class Player : MonoBehaviour
     public Weapon Schwert = new Weapon(40,Weapon.WeaponType.Melee);
     public Weapon KampfAxt = new Weapon(50,Weapon.WeaponType.Melee);
     public Weapon StreitKolben = new Weapon(60,Weapon.WeaponType.Melee); 
->>>>>>> main
     
     public Shield HolzSchild = new Shield(10,10);    
     public Shield EisenSchild = new Shield(20,15);   
@@ -160,15 +156,11 @@ public class Player : MonoBehaviour
 
         //InventoryShit
         inventory=new Inventory(UseItem);
-<<<<<<< HEAD
         ui_Inventory.setInventory(inventory);
-=======
         ui_Inventory.setInventory(inventory);  
         //Standardwaffen erstellen
         
       
->>>>>>> main
-
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -213,14 +205,9 @@ public class Player : MonoBehaviour
         if(EquipedWeapon!=null){
             if(EquipedWeapon.weaponType == Weapon.WeaponType.Melee)
         {
-<<<<<<< HEAD
-                attackSound.volume = 0.4f;
-            attackSound.Play();
-            Attack();
+                
             nextAttackTime= Time.time + 1f / attackRate;
-=======
             meleeAttack=true;
->>>>>>> main
         }
         else{
             meleeAttack=false;
@@ -322,10 +309,9 @@ public class Player : MonoBehaviour
 
     void Attack(Direction direction)
     {
-<<<<<<< HEAD
-       
-=======
-        if(direction == Direction.Left)
+        attackSound.volume = 0.4f;
+        attackSound.Play();
+        if (direction == Direction.Left)
         {
             Debug.Log("Left");
             //animator.SetTrigger("Attack_Left");
@@ -349,7 +335,6 @@ public class Player : MonoBehaviour
             //animator.SetTrigger("Attack_Down");
             attackpoint=attackpointDown;
         }
->>>>>>> main
         //Animation
         animator.SetTrigger("Attack");
         //Attack enemies
