@@ -157,11 +157,16 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence(string sentence){
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray()){
+            //Debug.Log("Code is executing here");
+            AudioManager.getInstance().Play("NPCDialog");
             dialogueText.text += letter;
             //Wait for waitTime many seconds
             float waitTime = 0.02f;
             yield return new WaitForSeconds(waitTime);
         }
+        //After Text has finished rendering
+        AudioManager.getInstance().Stop("NPCDialog");
+        
     }
 
     //End Dialogue and make sure the animator gets the notice

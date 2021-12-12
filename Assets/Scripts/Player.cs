@@ -59,6 +59,9 @@ public class Player : MonoBehaviour
     public bool[] skillarray= new bool[9];      // haben ist besser als brauchen ¯\_(ツ)_/¯  
     //canvasSkilltree für skilltree
     public GameObject canvasSkilltree;
+    public AudioSource audioSource;
+    public AudioClip swordSound;
+    public AudioClip walkingSound;
     bool canvasSkilltreeisActive;
     //Levelsystem
     public int exp=0;
@@ -76,11 +79,36 @@ public class Player : MonoBehaviour
     //Canvas für Inventar
     public GameObject canvasInventory;
     bool canvasInventoryisActive;
-    public Vector2 position; 
+    public Vector2 position;
+    //ItemBools
+    public bool HealPotionNormalEquiped=false;
+    public bool HealPotionGroßEquiped=false;
+    public bool  ManaTrankEquiped=false;
+    public bool ManaTrankGroßEquiped=false;
+    public bool MettBrotEquiped=false;
+    public bool BlätterwasserEquiped=false;
+    public bool LederRüstungEquiped=false;
+    public bool KettenRüstungEquiped=false;
+    public bool PlattenstahlRüstungEquiped=false;
+    public bool HolzSchildEquiped=false;
+    public bool EisenSchildEquiped=false;
+    public bool StahlSchildEquiped=false;
+    public bool BeginnerBogenEquiped=false;
+    public bool JägerBogenEquiped=false;
+    public bool AkolythenstabEquiped=false;
+    public bool ElementarstabEquiped=false;
+    public bool MeisterStabEquiped=false;
+    public bool SchwertEquiped=false;
+    public bool KampfAxtEquiped=false;
+    public bool StreitKolbenEquiped=false;
 
-   //UI Status Bar
-   public StatusBar healthBar;
-   public StatusBar manaBar;
+    AudioSource attackSound;
+
+    //UI Status Bar
+    public StatusBar healthBar;
+    public StatusBar manaBar;
+    public Text UIcurrentLevel;
+
     //potentielles Equipment
     public Weapon BeginnerBogen = new Weapon(10,Weapon.WeaponType.Bow);
     public Weapon JägerBogen = new Weapon(20,Weapon.WeaponType.Bow);
@@ -110,6 +138,12 @@ public class Player : MonoBehaviour
 
     void Start()
     {        	
+        
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        audioSources[0].clip = walkingSound;
+        audioSources[1].clip = swordSound;
+        audioSource = audioSources[0];
+        attackSound = audioSources[1];
         DontDestroyOnLoad(gameObject);  //damit player in neuer szene erhalten bleibt
         //Bug rudimentär gefixed, keine ahnung was das problem eigentlich ist ¯\_(ツ)_/¯
         canvasSkilltree.SetActive(false);
@@ -124,11 +158,11 @@ public class Player : MonoBehaviour
 
         //InventoryShit
         inventory=new Inventory(UseItem);
+        ui_Inventory.setInventory(inventory);
         ui_Inventory.setInventory(inventory);  
         //Standardwaffen erstellen
         
       
-
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -150,6 +184,19 @@ public class Player : MonoBehaviour
 
     void Update()
     {   
+        //Movement sound
+        if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            audioSource.volume = 0.04f;
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        } else
+        {
+            audioSource.Stop();
+        }
+
         //Movement        
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -160,6 +207,8 @@ public class Player : MonoBehaviour
         if(EquipedWeapon!=null){
             if(EquipedWeapon.weaponType == Weapon.WeaponType.Melee)
         {
+                
+            nextAttackTime= Time.time + 1f / attackRate;
             meleeAttack=true;
         }
         else{
@@ -262,7 +311,9 @@ public class Player : MonoBehaviour
 
     void Attack(Direction direction)
     {
-        if(direction == Direction.Left)
+        attackSound.volume = 0.4f;
+        attackSound.Play();
+        if (direction == Direction.Left)
         {
             Debug.Log("Left");
             //animator.SetTrigger("Attack_Left");
@@ -365,6 +416,7 @@ public class Player : MonoBehaviour
             skillTree.SkillPoints+=(temp-level);
             skillTree.LevelupSkillpoints+=(temp-level);
             level=temp;
+            UIcurrentLevel.text = level.ToString();
             //Werden mehrere Level auf einmal erreicht(was zu vermeiden ist) funzt das system trotzdem,
         }
     }
