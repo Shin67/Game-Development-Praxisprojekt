@@ -104,9 +104,11 @@ public class Player : MonoBehaviour
 
     AudioSource attackSound;
 
-   //UI Status Bar
-   public StatusBar healthBar;
-   public StatusBar manaBar;
+    //UI Status Bar
+    public StatusBar healthBar;
+    public StatusBar manaBar;
+    public Text UIcurrentLevel;
+
     //potentielles Equipment
     public Weapon BeginnerBogen = new Weapon(10,Weapon.WeaponType.Bow);
     public Weapon JägerBogen = new Weapon(20,Weapon.WeaponType.Bow);
@@ -414,6 +416,7 @@ public class Player : MonoBehaviour
             skillTree.SkillPoints+=(temp-level);
             skillTree.LevelupSkillpoints+=(temp-level);
             level=temp;
+            UIcurrentLevel.text = level.ToString();
             //Werden mehrere Level auf einmal erreicht(was zu vermeiden ist) funzt das system trotzdem,
         }
     }
