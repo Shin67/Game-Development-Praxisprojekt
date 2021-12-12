@@ -10,7 +10,6 @@ public class Collectable : Collidable
     {
         if (coll.name == "Player")
             OnCollect();
-
     }
 
     protected virtual void OnCollect()
