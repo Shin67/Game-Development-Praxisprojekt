@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    public int currentHealth;
     public Vector2 direction;
     public int directionUnits;
     public int speed;
     public int playerDistance;
     public int maxHealth;
-    //public HealthBar healthBar;
+    public HealthBar healthBar;
     public AudioClip enemySound;
     public Sprite moveTop;
     public Sprite moveBot;
     public Sprite moveRight;
     public Sprite moveLeft;
-    
 
+    int currentHealth;
     float[][] watchUp = { new float[] { -2, 2.5f }, new float[] { 2, 2.5f } };
     float[][] watchDown = { new float[] { -2, -2 }, new float[] { 2, -2 } };
     float[][] watchLeft = { new float[] { -2.5f, 2 }, new float[] { -2.5f, -2 } };
@@ -39,18 +37,38 @@ public class Enemy : MonoBehaviour
         actualSprite = GetComponentInChildren<SpriteRenderer>();
         viewArea = GetComponentInChildren<PolygonCollider2D>();
         audioSource = GetComponent<AudioSource>();
-        //healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
         goingBack = false;
         playerFound = false;
         directionCounter = 0;
         rigidbody = GetComponent<Rigidbody2D>();
-
+        Debug.Log(rigidbody);
+        savedX = 0;
+        savedY = 0;
     }
 
     private void FixedUpdate()
     {
-        if (direction.x > 0) // moves right
+    }
+
+    public void TakeDmg(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetSlider(currentHealth);
+    }
+
+    public void setPlayerFound(bool playerFound)
+    {
+        this.playerFound = playerFound;
+    }
+
+}
+
+
+/*
+ 
+  if (direction.x > 0) // moves right
         {
             viewArea.SetPath(0, new Vector2[] { new Vector2(0, 0.5f), new Vector2(watchRight[0][0], watchRight[0][1]), new Vector2(watchRight[1][0], watchRight[1][1]) });
             actualSprite.sprite = moveRight;
@@ -111,18 +129,5 @@ public class Enemy : MonoBehaviour
             savedX = rigidbody.position.x;
             savedY = rigidbody.position.y;
         }
-        
-    }
-
-    public void getDamage(int damage)
-    {
-        currentHealth -= damage;
-        //healthBar.SetSlider(damage);
-    }
-
-    public void setPlayerFound(bool playerFound)
-    {
-        this.playerFound = playerFound;
-    }
-
-}
+ 
+ */
