@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 929875741
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 2862748410898537690, guid: 7a7ed0018d15d4b58ae460c13952e787,
     type: 3}
@@ -164,6 +164,13 @@ MonoBehaviour:
   playerDistance: 10
   maxHealth: 100
   enemySound: {fileID: 8300000, guid: 580832a297c6f4f428f586ff4e951aab, type: 3}
+  moveTop: {fileID: -4027256997769111895, guid: 7a7ed0018d15d4b58ae460c13952e787,
+    type: 3}
+  moveBot: {fileID: 2862748410898537690, guid: 7a7ed0018d15d4b58ae460c13952e787, type: 3}
+  moveRight: {fileID: -421755225394135360, guid: 7a7ed0018d15d4b58ae460c13952e787,
+    type: 3}
+  moveLeft: {fileID: -1094461713343528042, guid: 7a7ed0018d15d4b58ae460c13952e787,
+    type: 3}
 --- !u!50 &2837295123071652053
 Rigidbody2D:
   serializedVersion: 4

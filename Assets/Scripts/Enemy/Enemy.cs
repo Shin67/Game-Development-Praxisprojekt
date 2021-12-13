@@ -13,8 +13,11 @@ public class Enemy : MonoBehaviour
     public int maxHealth;
     //public HealthBar healthBar;
     public AudioClip enemySound;
+    public Sprite moveTop;
+    public Sprite moveBot;
+    public Sprite moveRight;
+    public Sprite moveLeft;
     
-
 
     float[][] watchUp = { new float[] { -2, 2.5f }, new float[] { 2, 2.5f } };
     float[][] watchDown = { new float[] { -2, -2 }, new float[] { 2, -2 } };
@@ -29,9 +32,11 @@ public class Enemy : MonoBehaviour
     PolygonCollider2D viewArea;
     float savedX;
     float savedY;
+    SpriteRenderer actualSprite;
 
     private void Start()
     {
+        actualSprite = GetComponentInChildren<SpriteRenderer>();
         viewArea = GetComponentInChildren<PolygonCollider2D>();
         audioSource = GetComponent<AudioSource>();
         //healthBar.SetMaxHealth(maxHealth);
@@ -45,18 +50,23 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (direction.x > 0)
+        if (direction.x > 0) // moves right
         {
             viewArea.SetPath(0, new Vector2[] { new Vector2(0, 0.5f), new Vector2(watchRight[0][0], watchRight[0][1]), new Vector2(watchRight[1][0], watchRight[1][1]) });
-        } else if (direction.x < 0)
+            actualSprite.sprite = moveRight;
+
+        } else if (direction.x < 0) // moves left
         {
             viewArea.SetPath(0, new Vector2[] { new Vector2(0, 0.5f), new Vector2(watchLeft[0][0], watchLeft[0][1]), new Vector2(watchLeft[1][0], watchLeft[1][1]) });
-        } else if (direction.y > 0)
+            actualSprite.sprite = moveLeft;
+        } else if (direction.y > 0) // moves up
         {
             viewArea.SetPath(0, new Vector2[] { new Vector2(0, 0.5f), new Vector2(watchUp[0][0], watchUp[0][1]), new Vector2(watchUp[1][0], watchUp[1][1]) });
-        } else if (direction.y < 0)
+            actualSprite.sprite = moveTop;
+        } else if (direction.y < 0) // moves down
         {
             viewArea.SetPath(0, new Vector2[] { new Vector2(0, 0.5f), new Vector2(watchDown[0][0], watchDown[0][1]), new Vector2(watchDown[1][0], watchDown[1][1]) });
+            actualSprite.sprite = moveBot;
         }
 
 
