@@ -56,6 +56,10 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetSlider(currentHealth);
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void setPlayerFound(bool playerFound)
