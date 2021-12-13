@@ -23,29 +23,9 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetSlider(currentHealth);
         if (currentHealth <= 0)
-<<<<<<< HEAD
-=======
         {
             Destroy(gameObject);
         }
     }
 
-    public void setPlayerFound(bool playerFound)
-    {
-        this.playerFound = playerFound;
-    }
-
-}
-
-
-/*
- 
-  if (direction.x > 0) // moves right
->>>>>>> f22815d9598172cd0ed56f51924d988794be7489
-        {
-            Destroy(gameObject);
-            var player = GameObject.FindWithTag("Player");
-            player.GetComponent<Player>().addExp(exp);
-        }
-    }
 }
