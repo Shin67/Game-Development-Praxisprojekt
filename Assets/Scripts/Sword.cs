@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int attackDmg;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("BOOOOM");
         if (collision.gameObject.tag == "Enemy")
         {
-            
-            collision.gameObject.GetComponent<Enemy>().TakeDmg(10);
+            GameObject player = GameObject.FindWithTag("Player");
+            var dmg = attackDmg + player.GetComponent<Player>().atk;
+            collision.gameObject.GetComponent<Enemy>().TakeDmg(dmg);
         }
     }
 }

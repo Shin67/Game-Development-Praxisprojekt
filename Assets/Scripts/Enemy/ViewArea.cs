@@ -7,7 +7,7 @@ public class ViewArea : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
-            GetComponentInParent<Enemy>().setPlayerFound(true);
+            GetComponentInParent<EnemyMovement>().SetPlayerFound(true);
 
     }
 }

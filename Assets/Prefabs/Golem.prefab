@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 2837295123071652052}
   - component: {fileID: 2837295123071652053}
   - component: {fileID: 3858689093383226155}
+  - component: {fileID: 2060275484}
   m_Layer: 6
   m_Name: Golem
   m_TagString: Enemy
@@ -475,20 +476,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0472e2bdb0717854bbaf485727072d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 1}
-  directionUnits: 100
-  speed: 3
-  playerDistance: 10
   maxHealth: 100
   healthBar: {fileID: 1903709662}
-  enemySound: {fileID: 8300000, guid: 580832a297c6f4f428f586ff4e951aab, type: 3}
-  moveTop: {fileID: -4027256997769111895, guid: 7a7ed0018d15d4b58ae460c13952e787,
-    type: 3}
-  moveBot: {fileID: 2862748410898537690, guid: 7a7ed0018d15d4b58ae460c13952e787, type: 3}
-  moveRight: {fileID: -421755225394135360, guid: 7a7ed0018d15d4b58ae460c13952e787,
-    type: 3}
-  moveLeft: {fileID: -1094461713343528042, guid: 7a7ed0018d15d4b58ae460c13952e787,
-    type: 3}
+  exp: 50
+  attack: 10
 --- !u!50 &2837295123071652053
 Rigidbody2D:
   serializedVersion: 4
@@ -606,6 +597,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2060275484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2837295123071652041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdb8c5e4ae17864290262ae2893e0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySound: {fileID: 8300000, guid: 580832a297c6f4f428f586ff4e951aab, type: 3}
+  moveTop: {fileID: -4027256997769111895, guid: 7a7ed0018d15d4b58ae460c13952e787,
+    type: 3}
+  moveBot: {fileID: -1094461713343528042, guid: 7a7ed0018d15d4b58ae460c13952e787,
+    type: 3}
+  moveRight: {fileID: -421755225394135360, guid: 7a7ed0018d15d4b58ae460c13952e787,
+    type: 3}
+  moveLeft: {fileID: 2862748410898537690, guid: 7a7ed0018d15d4b58ae460c13952e787,
+    type: 3}
+  direction: {x: 0, y: 1}
+  directionUnits: 200
+  speed: 3
+  playerDistance: 10
 --- !u!1 &2837295123852890798
 GameObject:
   m_ObjectHideFlags: 0
