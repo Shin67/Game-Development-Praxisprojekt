@@ -44,7 +44,7 @@ public class LayerSorter : MonoBehaviour
             obstacles.Remove(o);
             if (obstacles.Count == 0)
             {
-                parentRenderer.sortingOrder = 1;
+                parentRenderer.sortingOrder = 10;
             }
             else
             {
