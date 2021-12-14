@@ -5,7 +5,7 @@ using UnityEngine;
 public class fightable : MonoBehaviour
 {
 
-    public Animator animator;
+    //public Animator animator;
     public int maxHealth = 100;
     int currentHealth;
     //LevelSystem Komponente
@@ -20,7 +20,7 @@ public class fightable : MonoBehaviour
     public void TakeDMG(int dmg)
     {
         currentHealth -= dmg;
-        animator.SetTrigger("Hurt");
+        //animator.SetTrigger("Hurt");
 
         if(currentHealth <=0){
             die();
@@ -29,13 +29,19 @@ public class fightable : MonoBehaviour
 
     void die()
     {
-        animator.SetBool("isDead", true);
+        //animator.SetBool("isDead", true);
         Debug.Log("Enemy died");
 
         GetComponent<Collider2D>().enabled= false;
         this.enabled = false;
 
         player.addExp(expValue);
+
+        Destroy(this);
+        foreach (Transform child in transform) 
+        {
+            Destroy(child.gameObject);
+        }
 
     }
 }
