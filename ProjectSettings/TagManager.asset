@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Text
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -46,8 +47,11 @@ TagManager:
   - name: Floor
     uniqueID: 2048077361
     locked: 0
-  - name: Objects on Floor
+  - name: on floor
     uniqueID: 1315149659
+    locked: 0
+  - name: buildung
+    uniqueID: 806002055
     locked: 0
   - name: Actor
     uniqueID: 929875741
