@@ -50,9 +50,6 @@ TagManager:
   - name: on floor
     uniqueID: 1315149659
     locked: 0
-  - name: buildung
-    uniqueID: 806002055
-    locked: 0
   - name: Actor
     uniqueID: 929875741
     locked: 0
