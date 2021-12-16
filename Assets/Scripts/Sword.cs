@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
     public int attackDmg;
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
