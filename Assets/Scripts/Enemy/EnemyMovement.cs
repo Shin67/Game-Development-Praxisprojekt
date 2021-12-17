@@ -44,6 +44,7 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        // change viewarea and moving direction
         if (direction.x > 0) // moves right
         {
             viewArea.SetPath(0, new Vector2[] { new Vector2(0, 0.5f), new Vector2(watchRight[0][0], watchRight[0][1]), new Vector2(watchRight[1][0], watchRight[1][1]) });
@@ -87,10 +88,10 @@ public class EnemyMovement : MonoBehaviour
         }
         else if (goingBack)
         {
-            Vector2 goingBackDirection = (new Vector2(savedX, savedY).normalized - new Vector2(rigidbody.position.normalized.x, rigidbody.position.normalized.y).normalized) * speed;
+            Vector2 goingBackDirection = new Vector2(savedX - rigidbody.position.x, savedY - rigidbody.position.y).normalized * speed;
 
             rigidbody.velocity = goingBackDirection;
-            if (goingBackDirection.x < 0.1 && goingBackDirection.y < 0.1)
+            if (goingBackDirection.x < 1 && goingBackDirection.y < 1)
             {
                 goingBack = false;
             }
