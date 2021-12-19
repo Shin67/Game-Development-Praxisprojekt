@@ -23,8 +23,8 @@ public class Enemy : MonoBehaviour
         {
             itemDrop = null;
         }
-        healthBar.SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDmg(int damage)
