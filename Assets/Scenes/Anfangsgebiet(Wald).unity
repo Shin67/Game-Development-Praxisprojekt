@@ -2050,6 +2050,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883c5bc7533d48b4b80697b3152ec206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closedInvHeight: 0
+  openInvHeight: 0
   player: {fileID: 1577790885}
 --- !u!1001 &107695556
 PrefabInstance:
@@ -6382,6 +6384,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 24363869}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &349077159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3757592531866481137, guid: b7b456cecb0fb78409b3ef58082dd215,
+    type: 3}
+  m_PrefabInstance: {fileID: 6189346779743911543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &349077160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349077159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0740b0a8adcac5c41a01e9e20e953a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &349175337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28903,7 +28923,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackRate: 2
-  healthPoints: 0
+  healthPoints: 100
   maxHealth: 100
   meleeAttack: 1
   ArrowPrefabLeft: {fileID: 2971533044720690692, guid: 6d1417f208daafa40acc4e124bea4217,
@@ -29045,7 +29065,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577790880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.67, y: 18.08, z: 0}
+  m_LocalPosition: {x: 31.02, y: 0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 217220857}

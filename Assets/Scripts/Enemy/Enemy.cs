@@ -16,7 +16,13 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        itemDrop = droppableItems[Random.Range(0, droppableItems.Length)];
+        if (droppableItems.Length != 0)
+        {
+            itemDrop = droppableItems[Random.Range(0, droppableItems.Length)];
+        } else
+        {
+            itemDrop = null;
+        }
         healthBar.SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
     }
