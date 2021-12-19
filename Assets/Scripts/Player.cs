@@ -402,7 +402,6 @@ public class Player : MonoBehaviour
                 break;
             }
         }
-        Debug.Log(temp);
         if(temp>level) //ist das errechnete Level größer als das aktuelle liegt ein levelup vor
         {             
             //Debug.Log(temp-level);
