@@ -148,8 +148,8 @@ public class Player : MonoBehaviour
         //Bug rudimentär gefixed, keine ahnung was das problem eigentlich ist ¯\_(ツ)_/¯
         canvasSkilltree.SetActive(false);
         canvasSkilltreeisActive=false;
-        canvasInventory.SetActive(false);
-        canvasInventoryisActive=false;
+        /* canvasInventory.SetActive(false);
+        canvasInventoryisActive=false; */
         //Array mit allen durch den Baum erhaltenden Skills(Ka ob jemals gebraucht, war für etwas anderes geplant)
         skillarray = new bool[] {elementarPfeil,elementarRegen,
                                             scharfschuss,elementarhieb,
@@ -283,15 +283,8 @@ public class Player : MonoBehaviour
         //Inventar aufrufen
         if(Input.GetKeyDown(KeyCode.I))
         {
-            if(canvasInventoryisActive){
-                canvasInventory.SetActive(false);
-                canvasInventoryisActive=false;
-                
-
-            }else{
-                canvasInventory.SetActive(true);
-                canvasInventoryisActive=true;
-            }
+            ui_Inventory.switchVisiblity();
+            
         }
 
         //Update UI Statusbar

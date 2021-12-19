@@ -10,15 +10,19 @@ public class UI_Inventory : MonoBehaviour
     private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
+    private Transform UIPos;
     private int rowCap =4;          //wie viele items sollen in einer reihe angezeigt werden?
     private bool isDrop=false;
-
+    private bool isVisible=false;
+    public int closedInvHeight;
+    public int openInvHeight;
     public Player player;
 
     private void Awake()
     {
         itemSlotContainer = transform.Find("itemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
+        UIPos = gameObject.transform;
     }
 
     public void setInventory(Inventory newInventory)
@@ -29,6 +33,19 @@ public class UI_Inventory : MonoBehaviour
         RefreshInventoryItems();
     }
 
+    public void switchVisiblity(){
+        isVisible = !isVisible;
+    }
+
+    void Update(){
+        //Wenn Inventory sichtbar sein soll aber noch nicht ist, dann ändere Transform position nach unten bis zur gewünschten Höhe
+        //Ansonsten soll das Inventory hochrutschen bis zur gewünschten Höhe
+        if(isVisible && UIPos.position.y > openInvHeight){
+            UIPos.position = UIPos.position + new Vector3(0,-5,0);
+        } else if(!isVisible && UIPos.position.y < closedInvHeight){
+            UIPos.position = UIPos.position + new Vector3(0,5,0);
+        }
+    }
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
         RefreshInventoryItems();
