@@ -120,11 +120,6 @@ public class UI_Inventory : MonoBehaviour
                     Debug.Log("Armor gedroppt");
                     player.EquipedArmor=null;
                 }
-                if(item.GetItemClass() == Item.ItemClass.Shield)
-                {
-                    Debug.Log("Shield gedroppt");
-                    player.EquipedShield=null;
-                }
             }        
         }else
         {

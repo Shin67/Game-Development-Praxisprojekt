@@ -26,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
             return;
 
         var distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
-        if (distanceToPlayer < 4)
+        if (distanceToPlayer < 5)
         {
             playerScript.healthPoints -= enemy.attack;
             playerScript.pushBack(transform.position);

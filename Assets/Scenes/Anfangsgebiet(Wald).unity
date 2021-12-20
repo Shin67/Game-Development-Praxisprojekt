@@ -28913,75 +28913,29 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 1577790886}
   animator: {fileID: 1577790884}
-  attackpoint: {fileID: 1737661365}
-  attackpointLeft: {fileID: 1315629104}
-  attackpointRight: {fileID: 242486346}
-  attackpointUp: {fileID: 1878911354}
-  attackpointDown: {fileID: 1737661365}
-  attackrange: 1
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
-  attackRate: 2
   healthPoints: 100
   maxHealth: 100
-  meleeAttack: 1
-  ArrowPrefabLeft: {fileID: 2971533044720690692, guid: 6d1417f208daafa40acc4e124bea4217,
-    type: 3}
-  ArrowPrefabRight: {fileID: 6982617031259506923, guid: 9eb9754c7cbee0140942344460661585,
-    type: 3}
-  ArrowPrefabUp: {fileID: 4930204379889953173, guid: 7bff0384ed312834f8580008647b802b,
-    type: 3}
-  ArrowPrefabDown: {fileID: 1341492855286068850, guid: fc836cacef886134aac38fd7f54d2250,
-    type: 3}
   atk: 40
-  matk: 0
+  magicAtk: 0
   def: 0
   mdef: 0
   str: 0
   dex: 0
   inte: 0
-  MP: 0
+  MP: 100
   MPMax: 100
-  elementarPfeil: 0
-  elementarRegen: 0
-  scharfschuss: 0
-  elementarhieb: 0
-  elementarwirbel: 0
-  rage: 0
-  elementarball: 0
-  elementarflaeche: 0
-  sturmkette: 0
-  skillarray: 000000000000000000
   canvasSkilltree: {fileID: 1942896257}
-  audioSource: {fileID: 0}
-  swordSound: {fileID: 8300000, guid: 5da7b24f7e8524dd18e70029088285aa, type: 3}
-  walkingSound: {fileID: 8300000, guid: fbfc9b9da35184ef8ad0ce89f6fa0bd5, type: 3}
   exp: 0
   ui_Inventory: {fileID: 107334174}
   canvasInventory: {fileID: 1886645774}
   position: {x: 0, y: 0}
-  HealPotionNormalEquiped: 0
-  "HealPotionGro\xDFEquiped": 0
-  ManaTrankEquiped: 0
-  "ManaTrankGro\xDFEquiped": 0
-  MettBrotEquiped: 0
-  "Bl\xE4tterwasserEquiped": 0
-  "LederR\xFCstungEquiped": 0
-  "KettenR\xFCstungEquiped": 0
-  "PlattenstahlR\xFCstungEquiped": 0
-  HolzSchildEquiped: 0
-  EisenSchildEquiped: 0
-  StahlSchildEquiped: 0
-  BeginnerBogenEquiped: 0
-  "J\xE4gerBogenEquiped": 0
-  AkolythenstabEquiped: 0
-  ElementarstabEquiped: 0
-  MeisterStabEquiped: 0
-  SchwertEquiped: 0
-  KampfAxtEquiped: 0
-  StreitKolbenEquiped: 0
-  knockbackSpeed: 400
+  knockbackSpeed: 1500
+  audioSource: {fileID: 0}
+  swordSound: {fileID: 8300000, guid: 5da7b24f7e8524dd18e70029088285aa, type: 3}
+  walkingSound: {fileID: 8300000, guid: fbfc9b9da35184ef8ad0ce89f6fa0bd5, type: 3}
   healthBar: {fileID: 605511029}
   manaBar: {fileID: 844418266}
   UIcurrentLevel: {fileID: 639570279}
