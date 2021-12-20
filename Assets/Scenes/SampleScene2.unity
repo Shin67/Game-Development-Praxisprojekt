@@ -1002,13 +1002,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0472e2bdb0717854bbaf485727072d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  direction: {x: 0, y: 0}
-  directionUnits: 0
-  speed: 0
-  playerDistance: 0
   maxHealth: 0
-  enemySound: {fileID: 0}
+  healthBar: {fileID: 0}
+  exp: 0
+  attack: 0
+  droppableItems: []
 --- !u!114 &376584409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,7 +1019,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cc06cf162bcc2469d0b108c9677865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 376584402}
   maxHealth: 100
   expValue: 100
   player: {fileID: 723200763}
@@ -1082,6 +1079,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883c5bc7533d48b4b80697b3152ec206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closedInvHeight: 0
+  openInvHeight: 0
   player: {fileID: 723200763}
 --- !u!1 &457737414
 GameObject:
@@ -1402,7 +1401,7 @@ Camera:
   far clip plane: 1000
   field of view: 55
   orthographic: 1
-  orthographic size: 5.1192436
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2077,6 +2076,7 @@ MonoBehaviour:
   StreitKolbenEquiped: 0
   healthBar: {fileID: 2094418485}
   manaBar: {fileID: 827252289}
+  UIcurrentLevel: {fileID: 0}
 --- !u!212 &723200764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9230,7 +9230,7 @@ Transform:
   m_Children:
   - {fileID: 1478045004}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1776964627
 GameObject:

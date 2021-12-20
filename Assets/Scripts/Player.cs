@@ -101,6 +101,8 @@ public class Player : MonoBehaviour
     public bool SchwertEquiped=false;
     public bool KampfAxtEquiped=false;
     public bool StreitKolbenEquiped=false;
+    public float knockbackSpeed = 400f;
+    
 
     AudioSource attackSound;
 
@@ -545,8 +547,11 @@ public class Player : MonoBehaviour
             return;
         }
         Gizmos.DrawWireSphere(attackpoint.position, attackrange);
-    }   
+    }
 
-
-    
+    public void pushBack(Vector2 enemyPosition)
+    {
+        var direction = (position - enemyPosition).normalized;
+        rb.AddForce(direction * knockbackSpeed);
+    }
 }
