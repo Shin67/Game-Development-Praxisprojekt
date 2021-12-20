@@ -11,10 +11,15 @@ public class Inventory
     public int capacity=20;
     public int inhalt=0;
 
+    public Inventory()
+    {
+        itemList = new List<Item>();
+    }
+
     public Inventory(Action<Item> useItemAction)
     {
         this.useItemAction = useItemAction;
-        itemList= new List<Item>();
+        itemList = new List<Item>();
         //Debug.Log("Inventar steht");
         //addItem(new Item{ itemtype = Item.Itemtype.Sword, amount=1});   //bsp item einfügen
         //addItem(new Item{ itemtype = Item.Itemtype.HealPotion, amount=1});   //bsp item einfügen
