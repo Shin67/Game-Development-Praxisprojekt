@@ -7,6 +7,10 @@ TagManager:
   - Enemy
   - Text
   - Obstacle
+  - Puzzle1
+  - Puzzle4
+  - Puzzle3
+  - Puzzle2
   layers:
   - Default
   - TransparentFX
@@ -17,8 +21,8 @@ TagManager:
   - Enemies
   - npcLayer
   - Blocking
-  - 
-  - 
+  - Puzzle
+  - Barrier
   - 
   - 
   - 
