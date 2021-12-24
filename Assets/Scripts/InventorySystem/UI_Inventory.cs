@@ -14,9 +14,9 @@ public class UI_Inventory : MonoBehaviour
     private int rowCap =4;          //wie viele items sollen in einer reihe angezeigt werden?
     private bool isDrop=false;
     private bool isVisible=false;
-    public int closedInvHeight;
-    public int openInvHeight;
+    public Transform parent;
     public Player player;
+    
 
     private void Awake()
     {
@@ -34,18 +34,20 @@ public class UI_Inventory : MonoBehaviour
     }
 
     public void switchVisiblity(){
+        //Erstmal Variable updaten
         isVisible = !isVisible;
-    }
 
-    void Update(){
-        //Wenn Inventory sichtbar sein soll aber noch nicht ist, dann ändere Transform position nach unten bis zur gewünschten Höhe
-        //Ansonsten soll das Inventory hochrutschen bis zur gewünschten Höhe
-        if(isVisible && UIPos.position.y > openInvHeight){
-            UIPos.position = UIPos.position + new Vector3(0,-5,0);
-        } else if(!isVisible && UIPos.position.y < closedInvHeight){
-            UIPos.position = UIPos.position + new Vector3(0,5,0);
+        //Danach schauen wo Inventar stehen soll
+        if (isVisible){
+            //Entweder an Parent Canvas position (Die Mitte vom Screen)
+            UIPos.position = parent.position;
+        } else {
+            //Oder in bumfuck nowhere (offscreen)
+            UIPos.position = new Vector3(20000,20000,0);
         }
     }
+
+    void Update(){}
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
         RefreshInventoryItems();
