@@ -6,6 +6,11 @@ using static SkillTree;
 
 public class Player : MonoBehaviour
 {
+
+    //Singleton-Pattern
+    private static Player instance;
+
+
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
@@ -24,7 +29,7 @@ public class Player : MonoBehaviour
     public LayerMask enemyLayers;
     public float attackRate = 2;
     float nextAttackTime = 0f;
-    public int healthPoints=100;
+    public int currentHealth=100;
     public int maxHealth=100; //provisorischer wert
 
     public Weapon EquipedWeapon;
@@ -136,7 +141,21 @@ public class Player : MonoBehaviour
        Up,
        Down
 
-   }                                                                           
+   }      
+
+    private void Awake(){
+        if (instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }else{
+            Destroy(gameObject);
+        }
+        
+    }
+
+    public static Player getInstance(){
+        return instance;
+    }                                                            
 
     void Start()
     {        	
@@ -146,7 +165,6 @@ public class Player : MonoBehaviour
         audioSources[1].clip = swordSound;
         audioSource = audioSources[0];
         attackSound = audioSources[1];
-        DontDestroyOnLoad(gameObject);  //damit player in neuer szene erhalten bleibt
         //Bug rudimentär gefixed, keine ahnung was das problem eigentlich ist ¯\_(ツ)_/¯
         canvasSkilltree.SetActive(false);
         canvasSkilltreeisActive=false;
@@ -291,7 +309,7 @@ public class Player : MonoBehaviour
 
         //Update UI Statusbar
         healthBar.setMaxValue(maxHealth);
-        healthBar.setValue(healthPoints);
+        healthBar.setValue(currentHealth);
 
         manaBar.setMaxValue(MPMax);
         manaBar.setValue(MP);     
@@ -375,10 +393,10 @@ public class Player : MonoBehaviour
     }
 
     public void addHealth(int amount){
-        if (healthPoints + amount > maxHealth){
-            healthPoints = maxHealth;
+        if (currentHealth + amount > maxHealth){
+            currentHealth = maxHealth;
         } else {
-            healthPoints += amount;
+            currentHealth += amount;
         }
         
     }
@@ -422,18 +440,18 @@ public class Player : MonoBehaviour
                             
            default:
            case Item.Itemtype.HealPotionNormal:   
-                healthPoints+=10;
-                    if(healthPoints>maxHealth) 
+                currentHealth+=10;
+                    if(currentHealth>maxHealth) 
                     {
-                        healthPoints=maxHealth;
+                        currentHealth=maxHealth;
                     }
                 inventory.RemoveItem(new Item{itemtype = Item.Itemtype.HealPotionNormal, amount=1});     
            break;
            case Item.Itemtype.HealPotionGroß:
-                healthPoints+=50;
-                if(healthPoints>maxHealth) 
+                currentHealth+=50;
+                if(currentHealth>maxHealth) 
                 {
-                    healthPoints=maxHealth;
+                    currentHealth=maxHealth;
                 }
                 inventory.RemoveItem(new Item{itemtype = Item.Itemtype.HealPotionGroß, amount=1});   
            break;
@@ -454,10 +472,10 @@ public class Player : MonoBehaviour
                 inventory.RemoveItem(new Item{itemtype = Item.Itemtype.ManaTrankGroß, amount=1});           
            break;
            case Item.Itemtype.MettBrot:   
-                healthPoints+=20;
-                if(healthPoints>maxHealth) 
+                currentHealth+=20;
+                if(currentHealth>maxHealth) 
                 {
-                    healthPoints=maxHealth;
+                    currentHealth=maxHealth;
                 }
                 inventory.RemoveItem(new Item{itemtype = Item.Itemtype.MettBrot, amount=1});     
            break;
