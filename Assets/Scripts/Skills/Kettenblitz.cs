@@ -12,8 +12,10 @@ public class Kettenblitz : MonoBehaviour
     private GameObject[] targets;
     private bool[] targetsHit;
     private int numOfHits = 0;
-    private int timeToLive = 500;
+
+    private int[] targetIndices;
     private LineRenderer lr;
+    private bool spellFinished = false;
     private void Awake(){
         //Setup damit alles ordentlich funktioniert
         caster = Player.getInstance();                          //Get Player Instance and get Player-Intelligence
@@ -25,14 +27,19 @@ public class Kettenblitz : MonoBehaviour
             Debug.Log("Target: " + targets[i].name + " Distance: " + Vector3.Distance(transform.position,targets[i].transform.position));
         }
 
+        //Setup Array that keeps track of Indices hit in order, to help with smoother animation
+        targetIndices = new int[maxTargets];
+
         //Setup Line-Renderer, damit man auch visuell was sieht
         lr = gameObject.AddComponent<LineRenderer>();
         lr.startColor = lr.endColor = Color.cyan;
         lr.alignment = LineAlignment.View;
         lr.startWidth = lr.endWidth = 0.3f;
         lr.positionCount = 1;
+        lr.numCapVertices = 3;
+        lr.numCornerVertices = 3;
         lr.SetPosition(0, transform.position);  //Start at Cast Origin
-        lr.sortingLayerName = "Actor";
+        lr.sortingLayerName = "on floor";
         lr.material = new Material(Shader.Find("Sprites/Default"));
         
         //Soundeffekt abspielen
@@ -40,21 +47,36 @@ public class Kettenblitz : MonoBehaviour
 
         //MainLoop starten
         StartCoroutine(mainLoop());
-        //Debug.Log("Kettenblitz gecasted!");
     }
     
 
-    // Update is called once per frame
-    void Update(){}
+    // Update the 0th position to stick to the caster, but only as long as the spell isn't finished.
+    // Also update all other positions to stick to their respective enemies
+    // Once the spell is finished, stop updating so the spell can properly disappear
+    // Also check for NullPointer, as enemies since the hit happened may have died already
+    void Update(){
+        if (!spellFinished){
+            lr.SetPosition(0, caster.transform.position);
+
+            for (int i = 0; i < numOfHits; i++){
+                GameObject enemyHit = targets[targetIndices[i]];
+                if (enemyHit != null){
+                    lr.SetPosition(i+1, enemyHit.transform.position);
+                }
+            }
+        }
+    }
     
 
     IEnumerator mainLoop(){
         while (numOfHits < maxTargets){
+            Debug.Log(numOfHits);
             int n = getIndexOfClosestNotYetBeenHitEnemy(); 
             //Wenn n == int.MaxValue, dann haben wir keinen Gegner den wir hitten können
             if(n == int.MaxValue){
                 break;
             }
+            targetIndices[numOfHits] = n;
             drawLineToEnemy(n);
             hitEnemy(n);
             moveToEnemy(n);
@@ -62,6 +84,14 @@ public class Kettenblitz : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(0.1f);
+        
+        spellFinished = true;
+
+        for (int i = 0; i < numOfHits; i++){
+            deleteOldestLine();
+            yield return new WaitForSeconds(0.1f);
+        }
+
         Destroy(gameObject);
     }
 
@@ -85,6 +115,18 @@ public class Kettenblitz : MonoBehaviour
     void moveToEnemy(int targetIndex){
         transform.position = targets[targetIndex].transform.position;
     }
+
+    //Removes oldest Line by copying all other lines one step down
+    void deleteOldestLine(){
+
+        int newPositionCount = lr.positionCount - 1;
+        for (int i = 0; i < newPositionCount; i++){
+            lr.SetPosition(i, lr.GetPosition(i+1));
+        }
+
+        lr.positionCount = newPositionCount;
+    }
+
     private int getIndexOfClosestNotYetBeenHitEnemy(){
 
         //Need to remember Distance and Index of closest Enemy
@@ -110,4 +152,5 @@ public class Kettenblitz : MonoBehaviour
         return closestIndex;
 
     }
+
 }
