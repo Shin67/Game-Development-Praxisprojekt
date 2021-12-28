@@ -47,21 +47,25 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string name){
         Sound sound = Array.Find(sounds, s => s.name == name);
-        if (sound != null && !sound.source.isPlaying){
-            Debug.Log("Playing Sound:" + sound.name);
-            sound.source.Play();
-        } else{
+        if (sound == null){
             Debug.LogWarning("Sound " + name + " konnte nicht gefunden werden im sound Array und wird deswegen nicht abgespielt. \nTypo? Vergessen den Sound hinzuzufügen? Sonderzeichen?");
+            return;
+        }
+        if (!sound.source.isPlaying){
+            /* Debug.Log("Playing Sound:" + sound.name); */
+            sound.source.Play();
         }
     }
 
     public void Stop(string name){
         Sound sound = Array.Find(sounds, s => s.name == name);
-        if (sound != null && sound.source.isPlaying){
-            Debug.Log("Stopping Sound:" + sound.name);
-            sound.source.Stop();
-        } else{
+        if (sound == null){
             Debug.LogWarning("Sound " + name + " konnte nicht gefunden werden im sound Array und wird deswegen nicht abgespielt. \nTypo? Vergessen den Sound hinzuzufügen? Sonderzeichen?");
+            return;
+        }
+        if (sound.source.isPlaying){
+            /* Debug.Log("Stopping Sound:" + sound.name); */
+            sound.source.Stop();
         }
     }
 }

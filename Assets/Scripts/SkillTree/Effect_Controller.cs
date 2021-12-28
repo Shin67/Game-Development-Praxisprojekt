@@ -18,30 +18,30 @@ public class Effect_Controller : MonoBehaviour
     }
 
     public void setElementarpfeil(){
-        player.elementarPfeil=true;
+        player.FeuerpfeilLearned = true;
     }
     public void setElementarRegen(){
-        player.elementarRegen=true;
+        player.WasserpfeilhagelLearned = true;
     }
     public void setScharfschuss(){
-        player.scharfschuss=true;
+        player.ScharfschussLearned = true;
     }
     public void setElementarHieb(){
-        player.elementarhieb=true;
+        player.WasserhiebLearned = true;
     }
     public void setElementarWirbel(){
-        player.elementarwirbel=true;
+        player.ElektrowirbelLearned = true;
     }
     public void setRage(){
-        player.rage=true;
+        player.RageLearned = true;
     }
     public void setElementarBall(){
-        player.elementarball=true;
+        player.FeuerballLearned = true;
     }
     public void setElementarflaeche(){
-        player.elementarflaeche=true;
+        player.WasserflaecheLearned = true;
     }
     public void setSturmkette(){
-        player.sturmkette=true;
+        player.SturmketteLearned = true;
     }
 }

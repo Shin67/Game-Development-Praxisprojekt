@@ -39,16 +39,16 @@ public class SkillTree : MonoBehaviour
        {
         "1",
        "+ Dex",
-       "ElementarPfeil",
-       "Elementarregen",
+       "FeuerPfeil",
+       "Wasserpfeilhagel",
        "Scharfschuss",
        "+STR",
-       "Elementarhieb",
-       "Elementarwirbel",
+       "Wasserhieb",
+       "Elektrowirbel",
        "Rage",
        "+INT",
-       "Elementarball",
-       "Elementarfläche",
+       "Feuerball",
+       "Wasserfläche",
        "Sturmkette"
        };
 

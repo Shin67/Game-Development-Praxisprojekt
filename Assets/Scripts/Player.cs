@@ -29,39 +29,53 @@ public class Player : MonoBehaviour
     public LayerMask enemyLayers;
     public float attackRate = 2;
     float nextAttackTime = 0f;
-    public int currentHealth=100;
-    public int maxHealth=100; //provisorischer wert
-
     public Weapon EquipedWeapon;
     public Shield EquipedShield;
     public Armor EquipedArmor;
     public bool meleeAttack=false;
-    //Fernkampfshit
+    
+    //Instantiates 
     public GameObject ArrowPrefabLeft;   
     public GameObject ArrowPrefabRight;    
     public GameObject ArrowPrefabUp;    
-    public GameObject ArrowPrefabDown; 
+    public GameObject ArrowPrefabDown;
+    public GameObject emptySkill;
+
     //Attribute aus Spielmechaniken.pdf
+    public int currentHealth=100;
+    public int maxHealth=100;
+    public int MP = 100;
+    public int MPMax=100;
     public int atk=40;  //physischer Schaden
     public int matk=0;  //magischer Schaden
     public int def=0; //Verteidigung
     public int mdef=0; //magische Verteidigung 
-    public int str=0; //staerke
-    public int dex=0; //Geschicklichkeit
-    public int inte =0; // intelligenz
-    public int MP =0;
-    public int MPMax=100;
-    //Skills aus Skilltree
-    public bool elementarPfeil = false;
-    public bool elementarRegen = false;
-    public bool scharfschuss = false;
-    public bool elementarhieb = false;
-    public bool elementarwirbel = false;
-    public bool rage = false;
-    public bool elementarball = false;
-    public bool elementarflaeche = false;
-    public bool sturmkette = false;
-    public bool[] skillarray= new bool[9];      // haben ist besser als brauchen ¯\_(ツ)_/¯  
+    public int str=15; //staerke
+    public int dex=15; //Geschicklichkeit
+    public int inte =15; // intelligenz
+
+    //Ability Kram - Bools sehen zwar doof aus, sind aber praktisch und peformancetechnisch gesehen das Beste. 
+    public Ability equippedAbility;
+    public bool FeuerpfeilLearned               = false;
+    private int FeuerpfeilMPKost                = 100;
+    public bool WasserpfeilhagelLearned         = false;
+    private int WasserpfeilhagelMPKost          = 100;
+    public bool ScharfschussLearned             = false;
+    private int ScharfschussMPKost              = 100;
+    public bool WasserhiebLearned               = false;
+    private int WasserhiebMPKost                = 100;
+    public bool ElektrowirbelLearned            = false;
+    private int ElektrowirbelMPKost             = 100;
+    public bool RageLearned                     = false;
+    private int RageMPKost                      = 100;
+    public bool FeuerballLearned                = false;
+    private int FeuerballMPKost                 = 100;
+    public bool WasserflaecheLearned            = false;
+    private int WasserflaecheMPKost             = 100;
+    public bool SturmketteLearned               = false;
+    private int SturmketteMPKost                = 5;
+
+    
     //canvasSkilltree für skilltree
     public GameObject canvasSkilltree;
     public AudioSource audioSource;
@@ -171,10 +185,10 @@ public class Player : MonoBehaviour
         /* canvasInventory.SetActive(false);
         canvasInventoryisActive=false; */
         //Array mit allen durch den Baum erhaltenden Skills(Ka ob jemals gebraucht, war für etwas anderes geplant)
-        skillarray = new bool[] {elementarPfeil,elementarRegen,
+        /*skillarray = new bool[] {elementarPfeil,elementarRegen,
                                             scharfschuss,elementarhieb,
                                             elementarwirbel,rage,elementarball,
-                                            elementarflaeche,sturmkette};
+                                            elementarflaeche,sturmkette};*/
 
         //InventoryShit
         inventory=new Inventory(UseItem);
@@ -305,6 +319,67 @@ public class Player : MonoBehaviour
         {
             ui_Inventory.switchVisiblity();
             
+        }
+
+        //Skills nutzen
+        //Ein Skill wird benutzt indem zuerst geschaut wird welcher Skill ausgerüstet ist und ob die MP dafür reichen
+        //Wenn dies erfüllt ist, werden die MP dementsprechend verringert, und ein neues komplett leeres GameObject wird instanziiert.
+        //Das leere GameObject wird an der gleichen Stelle erstellt, wo der Spieler sich aktuell befindet.
+        //Der Plan ist, diesem leeren GameObject dann das jeweilige Skill-Skript hinzuzufügen. 
+        //Das jeweilige Skill-Skript soll das komplette Behaviour vom Skill bestimmen (Lebenszeit, Hitbox, Schaden).
+        //Dazu kann in der "private void Awake()" - Methode eine Referenz zum Spieler mithilfe von "Player.getInstance()" erstellt werden.
+        //Mithilfe dieser Referenz können dann Spielerattribute (STR, DEX, INT) geholt werden, welche eventuell zur Schadensberechnung wichtig sind.
+
+        //Notiz: Dieser Code ist nicht hübsch, sollte aber Performancetechnisch kein Problem darstellen.
+        //Vermutlich ließe sich das hier besser lösen über ScriptableObjects, wenn man mehr Ahnung von Unity hätte, allerdings haben wir Zeitdruck und müssen fertig werden.
+        //Ich bitte euch daher einfach diese suboptimale Lösung zu akzeptieren, weil sie funktioniert.
+        if(Input.GetKeyDown(KeyCode.Q)){
+            if (equippedAbility == Ability.Feuerpfeil && MP >= FeuerpfeilMPKost){
+                MP -= FeuerpfeilMPKost;
+                GameObject skill = Instantiate(emptySkill, transform.position, transform.rotation);
+                /* skill.AddComponent<Feuerpfeil>(); */
+
+            } else if (equippedAbility == Ability.Wasserpfeilhagel && MP >= WasserpfeilhagelMPKost){
+                MP -= WasserpfeilhagelMPKost;
+                GameObject skill = Instantiate(emptySkill, transform.position, transform.rotation);
+                /*skill.AddComponent<Wasserpfeilhagel>();*/
+
+            } else if (equippedAbility == Ability.Scharfschuss && MP >= ScharfschussMPKost){
+                MP -= ScharfschussMPKost;
+                GameObject skill = Instantiate(emptySkill, transform.position, transform.rotation);
+                /* skill.AddComponent<Scharfschuss>(); */
+
+            } else if (equippedAbility == Ability.Wasserhieb && MP >= WasserhiebMPKost){
+                MP -=  WasserhiebMPKost;
+                GameObject skill = Instantiate(emptySkill, transform.position, transform.rotation);
+                /* skill.AddComponent<Wasserhieb>(); */
+
+            } else if (equippedAbility == Ability.Elektrowirbel && MP >= ElektrowirbelMPKost){
+                MP -= ElektrowirbelMPKost;
+                GameObject skill = Instantiate(emptySkill, transform.position, transform.rotation);
+                /* skill.AddComponent<Elektrowirbel>(); */
+
+            } else if (equippedAbility == Ability.Rage && MP >= RageMPKost){
+                MP -= RageMPKost;
+                GameObject skill = Instantiate(emptySkill, transform.position, transform.rotation);
+                /* skill.AddComponent<Rage>(); */
+
+            } else if (equippedAbility == Ability.Feuerball && MP >= FeuerballMPKost){
+                MP -= FeuerballMPKost;
+                GameObject skill = Instantiate(emptySkill, transform.position, transform.rotation);
+                /* skill.AddComponent<Feuerball>(); */
+
+            } else if (equippedAbility == Ability.Wasserflaeche && MP >= WasserflaecheMPKost){
+                MP -= WasserflaecheMPKost;
+                GameObject skill = Instantiate(emptySkill, transform.position, transform.rotation);
+                /* skill.AddComponent<Wasserflaeche>(); */
+
+            } else if (equippedAbility == Ability.Sturmkette && MP >= SturmketteMPKost){
+                MP -= SturmketteMPKost;
+                GameObject skill = Instantiate(emptySkill, transform.position, transform.rotation);
+                skill.AddComponent<Kettenblitz>();
+
+            }
         }
 
         //Update UI Statusbar
@@ -572,4 +647,19 @@ public class Player : MonoBehaviour
         var direction = (position - enemyPosition).normalized;
         rb.AddForce(direction * knockbackSpeed);
     }
+
+}
+
+
+public enum Ability {
+    NoAbilityEquipped,  //<- Wichtig damit Unity nicht einfach das Enum auf Feuerpfeil setzt, ohne dass man es je gelernt hat... Stupid, I know, right??
+    Feuerpfeil,
+    Wasserpfeilhagel,
+    Scharfschuss,
+    Wasserhieb,
+    Elektrowirbel,
+    Rage,
+    Feuerball,
+    Wasserflaeche,
+    Sturmkette
 }

@@ -39,4 +39,8 @@ public class TestEnemy : MonoBehaviour
 
         currentHP -= (int)(amount * dmgMultiplicator);
     }
+
+    public void testMethod(){
+        Debug.Log("Hallo!");
+    }
 }
