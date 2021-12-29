@@ -2685,6 +2685,12 @@ MonoBehaviour:
     pitch: 1
     isLooping: 0
     source: {fileID: 0}
+  - name: LevelUp
+    clip: {fileID: 8300000, guid: 20e954227da0b3f4696f17981583fcf5, type: 3}
+    volume: 0.2
+    pitch: 1
+    isLooping: 0
+    source: {fileID: 0}
 --- !u!4 &688585086
 Transform:
   m_ObjectHideFlags: 0
@@ -4343,6 +4349,110 @@ MonoBehaviour:
                 m_StringArgument: 
                 m_BoolArgument: 0
               m_CallState: 2
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 2
+      name: 
+      text: 
+      choices:
+      - option: Heal HP by 20
+        reactingName: System
+        reaction: HP + 20
+        reactionEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 723200763}
+              m_TargetAssemblyTypeName: Player, Assembly-CSharp
+              m_MethodName: addHealth
+              m_Mode: 3
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 20
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 1
+      - option: Heal MP by 20
+        reactingName: System
+        reaction: MP + 20
+        reactionEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 723200763}
+              m_TargetAssemblyTypeName: Player, Assembly-CSharp
+              m_MethodName: addMP
+              m_Mode: 3
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 20
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 1
+      - option: Heal Both by 20
+        reactingName: System
+        reaction: HP + 20 --- MP + 20
+        reactionEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 723200763}
+              m_TargetAssemblyTypeName: Player, Assembly-CSharp
+              m_MethodName: addHealth
+              m_Mode: 3
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 20
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 1
+            - m_Target: {fileID: 723200763}
+              m_TargetAssemblyTypeName: Player, Assembly-CSharp
+              m_MethodName: addMP
+              m_Mode: 3
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 20
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+            - m_Target: {fileID: 11500000, guid: 898d5c0db8e1cbb4794575d36c07d09f,
+                type: 3}
+              m_TargetAssemblyTypeName: Player, Assembly-CSharp
+              m_MethodName: 
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: 
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 1
+      - option: Heal Both by 20
+        reactingName: System
+        reaction: HP + 20 --- MP + 20
+        reactionEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 723200763}
+              m_TargetAssemblyTypeName: Player, Assembly-CSharp
+              m_MethodName: addMP
+              m_Mode: 3
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 20
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
             - m_Target: {fileID: 11500000, guid: 898d5c0db8e1cbb4794575d36c07d09f,
                 type: 3}
               m_TargetAssemblyTypeName: Player, Assembly-CSharp
@@ -4358,7 +4468,19 @@ MonoBehaviour:
               m_CallState: 1
       toExecute:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 688585085}
+            m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+            m_MethodName: Play
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: LevelUp
+              m_BoolArgument: 0
+            m_CallState: 2
 --- !u!50 &948924551
 Rigidbody2D:
   serializedVersion: 4
