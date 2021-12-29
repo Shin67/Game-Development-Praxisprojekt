@@ -13,6 +13,7 @@ public class ItemWorld : MonoBehaviour
 
         ItemWorld itemworld = transform.GetComponent<ItemWorld>();
         itemworld.SetItem(item);
+        itemworld.spriteRenderer.sortingLayerName = "on floor";
 
         return itemworld;
     }
