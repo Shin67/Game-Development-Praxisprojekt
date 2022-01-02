@@ -1351,7 +1351,7 @@ Transform:
   - {fileID: 1245983127}
   - {fileID: 2020032674}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &79952765 stripped
 Transform:
@@ -2050,8 +2050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883c5bc7533d48b4b80697b3152ec206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closedInvHeight: 0
-  openInvHeight: 0
+  parent: {fileID: 0}
   player: {fileID: 1577790885}
 --- !u!1001 &107695556
 PrefabInstance:
@@ -11166,6 +11165,241 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619a758b44b55c1488f6143ccc029e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &607940481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 607940482}
+  - component: {fileID: 607940485}
+  - component: {fileID: 607940484}
+  - component: {fileID: 607940483}
+  - component: {fileID: 607940486}
+  - component: {fileID: 607940487}
+  m_Layer: 7
+  m_Name: Ohnmachtige-Person_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &607940482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607940481}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 32.704765, y: 4.729859, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &607940483
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607940481}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.5007343, y: 3}
+    newSize: {x: 4.5007343, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.5007343, y: 3}
+  m_EdgeRadius: 0
+--- !u!114 &607940484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607940481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990835ac33d066441b63bdbec936753c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  NPCName: 
+  isInRange: 0
+  busyWithInteraction: 0
+  interactionKey: 101
+  interactAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 607940484}
+        m_TargetAssemblyTypeName: InteractableNPC, Assembly-CSharp
+        m_MethodName: TriggerDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  dialogues:
+  - textBoxen:
+    - typeOfBox: 0
+      name: "Der eigentliche Auserw\xE4hlte"
+      text: ...
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "(Wenn Fey blo\xDF keine Rechts-Links-Schw\xE4che h\xE4tte\u2026 dann
+        w\xE4rst du die Person gewesen, welche diesen ganzen Mist ausbaden m\xFCsste.) "
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "(Warum h\xE4ttest du nicht als erstes aufwachen k\xF6nnen? Du h\xE4ttest
+        ihr Links und Rechts erkl\xE4ren k\xF6nnen, die Welt gerettet, und ich w\xE4re
+        jetzt bereits wieder zuhause und k\xF6nnte zocken.)"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "(Das Leben ist unfair. Ich m\xF6chte auch schlafen.)"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Ich kann dich zwar nicht h\xF6ren, aber ich sehe an deinem Gesicht,
+        dass du gerade schlecht von mir denkst!Ich kann dich zwar nicht h\xF6ren,
+        aber ich sehe an deinem Gesicht, dass du gerade schlecht von mir denkst!"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+  activeDialogueIndex: 0
+--- !u!212 &607940485
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607940481}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2660756228982146497, guid: 53b7d7fbd9987cd418751637d3852432,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 4.5007343, y: 3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!61 &607940486
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607940481}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.5007343, y: 3}
+    newSize: {x: 4.5007343, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.5007343, y: 3}
+  m_EdgeRadius: 0
+--- !u!50 &607940487
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607940481}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &609214617
 GameObject:
   m_ObjectHideFlags: 0
@@ -21356,6 +21590,679 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 976097011}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1154971722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1154971724}
+  - component: {fileID: 1154971723}
+  m_Layer: 0
+  m_Name: Fey
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1154971723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154971722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990835ac33d066441b63bdbec936753c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  NPCName: 
+  isInRange: 0
+  busyWithInteraction: 0
+  interactionKey: 101
+  interactAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1154971723}
+        m_TargetAssemblyTypeName: InteractableNPC, Assembly-CSharp
+        m_MethodName: TriggerDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  dialogues:
+  - textBoxen:
+    - typeOfBox: 0
+      name: ???
+      text: Hey! Heeeeey!
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: ???
+      text: 'Na, endlich bist du wach! '
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 1
+      name: 
+      text: 
+      choices:
+      - option: Wer bist du?
+        reactingName: ???
+        reaction: Hmph, also wirklich. Hat man dir nicht beigebracht, sich als Erstes
+          vorzustellen?
+        reactionEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - option: Wo bin ich?
+        reactingName: ???
+        reaction: Hmph, also wirklich. Hat man dir nicht beigebracht, sich als Erstes
+          vorzustellen?
+        reactionEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: 'Meine Frage ist angebracht, wenn man bedenkt, dass ich zuallerletzt
+        noch in meiner Wohnung war.  '
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: ???
+      text: "Oh, nein, nein, nein! Ich habe dich NICHT entf\xFChrt!"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: ???
+      text: 'Um deine Frage zu beantworten, ich bin Fey vom Westlichen Feenstamm
+        und du befindest dich im Dunkelwald.  '
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Ich habe dich nicht entf\xFChrt, glaube mir. Du bist hier, da du die
+        auserw\xE4hlte Person aus einer anderen Dimension bist, welche unsere Welt
+        retten wird!"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: Mir wurde lediglich aufgetragen, am heutigen Tage die bewusstlose Person
+        rechts vom Schrein zu meiner Meisterin zu bringen.
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: (Ich habe eindeutig zu viel getrunken. Einfach ignorieren und weiterschlafen.)
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Warum schlie\xDFt du deine Augen? "
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Hey, h\xF6r auf mich zu ignorieren!"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: ...
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: AUA!
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "(Einen Moment, ich f\xFChle den Schmerz\u2026? Was zum Teufel war in
+        meinem Drink, dass ich so starke Halluzinationen habe?)"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: Ich habe dich gewarnt. Weigere dich weiterhin mitzukommen und ich schlage
+        dich noch einmal.
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 1
+      name: 
+      text: 
+      choices:
+      - option: "Solltest du deine \u201Eauserw\xE4hlte Person\u201C nicht besser
+          behandeln?"
+        reactingName: Fey
+        reaction: ...
+        reactionEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - option: "(Schlag zur\xFCck)"
+        reactingName: 
+        reaction: (Du versuchst Fey zu schlagen, aber sie weicht gekonnt aus. Deine
+          Faust wird nicht verletzt, aber Dein Stolz schon.)
+        reactionEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Hmpf! Worauf ich hinaus wollte, wir m\xFCssen aus diesem Wald rauskommen."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Hmpf! Worauf ich hinaus wollte, wir m\xFCssen aus diesem Wald rauskommen.
+        Meine Meisterin wartet bereits auf dich."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: Wer ist deine Meisterin?
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Meine Meisterin ist die Beste! Sie ist eine Priesterin aus Magnolia
+        und hat so viel f\xFCr meinen Stamm und mich getan.  "
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: Magnolia ist das Dorf, welches am Ausgang des Waldes liegt. Der gesamte
+        Tempel erwartet deine Ankunft bereits und kann kaum auf dich warten.
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: Du meintest, dass deine Aufgabe ist, eine bewusstlose Person rechts vom
+        Schrein aufzusammeln.
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Genau, und ich bin die eeeeeinzige, welche diese Aufgabe erf\xFCllen
+        kann. Der Wald ist zu gef\xE4hrlich f\xFCr Menschen, aber wir Feen sind Meister
+        im Ausweichen."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: ...
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: Wo ist dein Rechts, und wo ist dein Links?
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Hm? Links ist nat\xFCrlich dort\u2014"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: 
+      text: (Fey zeigt nach rechts.)
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "\u2014 und Rechts ist dort!"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: (Fey zeigt nach links.)
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: " Es tut mir leid, deine Hoffnung zu zerst\xF6ren, aber wir befinden
+        uns links vom Schrein."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "Ich bin nicht der Held, den ihr erwartet. Euer Auserw\xE4hlter m\xFCsste
+        die Person sein, die tats\xE4chlich rechts vom Schrein liegt."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "Was ein sehr starker Zufall ist, welcher ziemlich plot convenient ist,
+        aber da ich scheinbar unter sehr starken Drogen stehe, m\xF6chte ich mich
+        nicht beschweren. "
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "Davon abgesehen w\xE4re es sehr unpraktisch f\xFCr die Storywriter,
+        direkt am Anfang ihre eigenen unkreativen Plotholes anzumerken. "
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: Oh nein.
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: 'Oh nein, nein, nein, nein, nein! '
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: Ich bin AUFGESCHMISSEN!
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: AAAAAAAAAAAAAAAAAH!!!
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: Wie konnte mir nur so ein Fehler passieren?!
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Wenn die Stamm\xE4lteste dies erf\xE4hrt, werden mir die Fl\xFCgel gestutzt!
+        Selbst den Rest meiner 500 Jahre langen Lebensspanne daf\xFCr zu b\xFC\xDFen
+        wird nie genug sein, um dies wiedergutzumachen!"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Du! Du musst mir helfen! Ich habe dir bereits die F\xE4higkeit gegeben,
+        Mana kontrollieren zu k\xF6nnen. "
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Einem Menschen diese F\xE4higkeit zu verleihen funktioniert nur mit
+        einem sehr, sehr, sehr raren Item, welches nach einer Nutzung verschwindet. "
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Da ich nur eins zur Verf\xFCgung gestellt bekommen habe und NIEMAND
+        herausfinden darf, dass ich unsere Helden verwechselt habe, musst du jetzt
+        die Welt retten."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Bitte! Ich flehe dich an! Ich helfe dir auch dabei, ins K\xE4mpfen reinzukommen.
+        Siehst du das Monster dort? Greif es an!"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 1
+      name: 
+      text: 
+      choices:
+      - option: 'Ich habe keine Lust dir zu helfen. '
+        reactingName: Fey
+        reaction: "Komm schon! Bitte, bitte, bitte! K\xE4mpfen macht Spa\xDF! Glaube
+          ich zumindest. Meine Rasse ist nicht f\xFCrs K\xE4mpfen geeignet."
+        reactionEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - option: Okay...
+        reactingName: Fey
+        reaction: Du bist ein Lebensretter! Ich werde deine gute Tat nie vergessen,
+          Feenehrenwort!
+        reactionEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Hier ist ein Schwert, mit welchem du k\xE4mpfen kannst. Um anzugreifen,
+        dr\xFCcke [TASTE]. "
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Der Gegner wird auch versuchen dich anzugreifen. Um auszuweichen, dr\xFCcke
+        [TASTE]. "
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "Warte einen Moment, \u201Edr\xFCcke\u201C\u2026? Wie soll ich etwas
+        dr\xFCcken?"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Du f\xFChlst es einfach!"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "Das einzige was ich momentan f\xFChle ist, dass ich mir vorkomme, als
+        sei ich in einem schlechten RPG gelandet\u2026"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Na los, kein Tr\xF6deln! Greife an mit [Taste], weiche aus mit [Taste].
+        Sei vorsichtig, denn deine Gesundheit kann sich w\xE4hrend eines Kampfes
+        nicht regenerieren."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+  - textBoxen:
+    - typeOfBox: 0
+      name: Fey
+      text: Das war ein super Anfang! Du hast das Zeug, um unsere Welt zu retten.
+        Meine Intuition war wohl doch nicht so falsch, hehe.
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Du hast wertvolle Erfahrung gesammelt. Au\xDFerhalb von K\xE4mpfen kannst
+        du dich erholen, wenn auch nicht vollst\xE4ndig. F\xFCr eine komplette Regeneration
+        brauchst du eine Nacht Schlaf in einem gem\xFCtlichen Bett."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Vielleicht finden wir hier im Wald aber auch Regenerationstr\xE4nke.
+        Die schmecken scheu\xDFlich, sind aber sehr effektiv!"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Auch ein paar Waffen und R\xFCstungen f\xFCr deine Angriffs- und deine
+        Verteidigungsst\xE4rke w\xE4ren nett, denn\u2026 naja, du bist nicht wirklich
+        gut ausgestattet. Sehr schlecht sogar."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Aber zur\xFCck zu deinen Erfahrungen! Du hast soeben Erfahrungspunkte,
+        auch EXP genannt, gesammelt. Sogar genug, um ein Level aufzusteigen."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Du kannst nun eine der Klassen Bogensch\xFCtze, K\xE4mpfer und Magier
+        ausw\xE4hlen. Keine Angst, sobald du genug Erfahrungspunkte f\xFCr das n\xE4chste
+        Level gesammelt hast, kannst du jederzeit eine andere Klasse erlernen!"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Dr\xFCcke [Taste], um das Men\xFC aufzurufen und w\xE4hle den Skilltree
+        aus. Von dort aus kannst du nach jedem Level-Up ausw\xE4hlen, ob du deine
+        Gesundheit (HP), Magiereserve (MP), Geschicklichkeit (DEX), St\xE4rke (STR)
+        oder Intelligenz (INT) erh\xF6hen m\xF6chtest. "
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "\u2026 M\xF6chtest du andeuten, dass ich nicht intelligent genug bin?
+        Nur damit du es wei\xDFt, erst letzte Nacht habe ich bis 3 Uhr gelernt, um
+        meine anstehende Grundlegende Programmiertechniken Klausur zu bestehen\u2014"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: Grundlegendes Was-auch-immer ist momentan nicht wichtig! Du musst dich
+        vorbereiten, um die Welt zu retten!
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "Ich w\xFCrde mich lieber auf meine Klausuren vorbereiten\u2026 werde
+        ich f\xFCr meine heroischen Taten \xFCberhaupt bezahlt?"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: ...
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "Schick mich zur\xFCck in meine Welt. Ich arbeite nicht umsonst."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "I-Ich bin mir sicher, dass sich etwas vereinbaren l\xE4sst! Daf\xFCr
+        m\xFCssen wir aber zun\xE4chst aus dem Wald herauskommen."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Und um das zu schaffen, solltest du nun den Skilltree aufrufen und deine
+        F\xE4higkeiten st\xE4rken!"
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Ach ja, sobald du ein weiteres Level aufgestiegen bist, kannst du eine
+        Elementarf\xE4higkeit erlernen und dir daf\xFCr ein Element aussuchen. Wasser
+        ist effektiv gegen Feuer, Feuer gegen Blitz und Blitz ist effektiv gegen
+        Wasser."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Und genau umgekehrt ist Feuer nicht effektiv gegen Wasser und so weiter.
+        Du verstehst schon, wenn du schon so schlau f\xFCr dein Grundlegendes\u2026
+        Irgendwas bist."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Deine erlernten F\xE4higkeiten kannst du vor oder w\xE4hrend eines Kampfes
+        ausr\xFCsten und mit der jeweils zugeteilten Taste anwenden."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Fey
+      text: "Wenn du etwas vergisst, kannst du alle meine Anweisungen aber auch unter
+        \u201EHilfe\u201C im Skilltree finden. Sobald du fertig bist, sprich mich
+        noch einmal an."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+  - textBoxen:
+    - typeOfBox: 0
+      name: Fey
+      text: "Der Ausgang des Waldes ist im Osten. Wir sollten so schnell wie m\xF6glich
+        zum Tempel, dort wird meine Meisterin dir alles Weitere erkl\xE4ren."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: Ist dein Osten links oder rechts?
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: "Links\u2014warte, nein, ich meine rechts! Die Richtung, aus welcher
+        auch das Monster gerade erschienen ist."
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+    - typeOfBox: 0
+      name: Du
+      text: (Also muss ich nur nach rechts gehen, dann bin ich aus diesem Wald raus.)
+      choices: []
+      toExecute:
+        m_PersistentCalls:
+          m_Calls: []
+  activeDialogueIndex: 0
+--- !u!4 &1154971724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154971722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 30.052423, y: 3.4152195, z: -37.380966}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1160476073 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5060640132130179041, guid: 4cf116d166a88a24d9608652f79a2908,
@@ -28923,8 +29830,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackRate: 2
-  healthPoints: 100
-  maxHealth: 100
   meleeAttack: 1
   ArrowPrefabLeft: {fileID: 2971533044720690692, guid: 6d1417f208daafa40acc4e124bea4217,
     type: 3}
@@ -28934,6 +29839,11 @@ MonoBehaviour:
     type: 3}
   ArrowPrefabDown: {fileID: 1341492855286068850, guid: fc836cacef886134aac38fd7f54d2250,
     type: 3}
+  emptySkill: {fileID: 0}
+  currentHealth: 100
+  maxHealth: 100
+  MP: 0
+  MPMax: 100
   atk: 40
   matk: 0
   def: 0
@@ -28941,18 +29851,16 @@ MonoBehaviour:
   str: 0
   dex: 0
   inte: 0
-  MP: 0
-  MPMax: 100
-  elementarPfeil: 0
-  elementarRegen: 0
-  scharfschuss: 0
-  elementarhieb: 0
-  elementarwirbel: 0
-  rage: 0
-  elementarball: 0
-  elementarflaeche: 0
-  sturmkette: 0
-  skillarray: 000000000000000000
+  equippedAbility: 0
+  FeuerpfeilLearned: 0
+  WasserpfeilhagelLearned: 0
+  ScharfschussLearned: 0
+  WasserhiebLearned: 0
+  ElektrowirbelLearned: 0
+  RageLearned: 0
+  FeuerballLearned: 0
+  WasserflaecheLearned: 0
+  SturmketteLearned: 0
   canvasSkilltree: {fileID: 1942896257}
   audioSource: {fileID: 0}
   swordSound: {fileID: 8300000, guid: 5da7b24f7e8524dd18e70029088285aa, type: 3}
@@ -33268,7 +34176,7 @@ PrefabInstance:
     - target: {fileID: 922694400474349054, guid: fe15dc11455fb754db1b444a6a164002,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 922694400474349054, guid: fe15dc11455fb754db1b444a6a164002,
         type: 3}
@@ -38450,7 +39358,7 @@ PrefabInstance:
     - target: {fileID: 3211825135698481589, guid: 902279e234c5c7d4693aa0cdcff6ad11,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3211825135698481589, guid: 902279e234c5c7d4693aa0cdcff6ad11,
         type: 3}
@@ -38832,7 +39740,7 @@ PrefabInstance:
     - target: {fileID: 3757592531866481135, guid: b7b456cecb0fb78409b3ef58082dd215,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3757592531866481135, guid: b7b456cecb0fb78409b3ef58082dd215,
         type: 3}
